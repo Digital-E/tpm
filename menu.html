@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théâtre Public de Montreuil</title>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="./styles/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./styles/style.css">
+
+    <!-- Javascript -->
+    <script src="./js/main.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+    <!-- Flickity  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flickity CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__logo">
+            <div>TPM</div>
+            <div>
+                <span>Théâtre</span>
+                <span>Public</span>
+                <span>Montreuil</span>
+            </div>
+        </div>
+        
+        <div class="nav__menu">
+            <ul>
+                <li class="nav__item h6"><a class="nav__link" href="">Le Théâtre</a></li>
+                <li class="nav__item h6"><a class="nav__link" href="">Avec Vous</a></li>
+                <li class="nav__item h6"><a class="nav__link" href="">Infos pratiques</a></li>
+                <li class="nav__item h6"><a class="nav__link" href="">Programme</a></li>
+                <li class="nav__item h6"><a class="nav__link" href="">Maison d'artistes</a></li>
+                <li class="nav__item h6"><a class="nav__link" href="">Newsletter</a></li>
+            </ul>
+        </div>
+
+        <div class="nav__module">
+            <div class="nav__search">
+                Search
+            </div>
+
+            <div class="nav__language-selector">
+                <ul>
+                    <li class="nav__item"><a class="nav__link" href="">Fr</a></li>
+                    <li class="nav__item"><a class="nav__link" href="">En</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__socials">
+                <ul>
+                    <li class=""><a class="" href="">inst</a></li>
+                    <li class=""><a class="" href="">fb</a></li>
+                    <li class=""><a class="" href="">twi</a></li>
+                    <li class=""><a class="" href="">lkdn</a></li>
+                    <li class=""><a class="" href="">ytb</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav__banner">
+            <div class="marquee">
+                <div class="marquee-wrapper">
+                    <div class="marquee-item">
+                        <div>
+                            Théâtre<br>
+                            Populaire<br>
+                            Montreuil
+                        </div>
+                        <div>
+                            Théâtre<br>
+                            Poétique<br>
+                            Montreuil
+                        </div>
+                        <div>
+                            Théâtre<br>
+                            Polymorphe<br>
+                            Montreuil
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</body>
+
+<script>
+    // Marquee Script
+    
+    let marquee = document.querySelector(".marquee");
+    let marqueeWrapper = document.querySelector(".marquee-wrapper");
+    let marqueeItem = document.querySelector(".marquee-item");
+    
+    marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+    marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+
+    
+    for(let i=0; i < 5; i++) {
+        let newNode = marqueeWrapper.children[0].cloneNode(true);
+        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+    }
+
+
+    gsap.set(".marquee-item", {
+        x: (i) => i * marqueeItem.offsetWidth
+    });
+
+    
+    gsap.to(".marquee-item", {
+        duration: 50,
+        ease: "none",
+        x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+        modifiers: {
+        x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+        },
+        repeat: -1
+    });   
+
+</script>
+
+</html>
+

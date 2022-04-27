@@ -1,0 +1,202 @@
+@font-face {
+    font-family: "Es Formal Standard Regular";
+    src: url("/fonts/ESFormal-StandardRegular.otf");
+}
+
+@font-face {
+    font-family: "Es Formal Standard Bold";
+    src: url("/fonts/ESFormal-StandardBold.otf");
+}
+
+@font-face {
+    font-family: "Es Formal Standard SemiBold";
+    src: url("/fonts/ESFormal-StandardSemiBold.otf");
+}
+
+
+@font-face {
+    font-family: "Es Formal Standard Medium";
+    src: url("/fonts/ESFormal-StandardMedium.otf");
+}
+
+body {
+    background: beige;
+}
+
+h1, .h1 {
+    font-family: "Es Formal Standard Bold";
+    /* font-size: 230pt; */
+    /* font-size: 307px; */
+    font-size: 19.17em;
+    /* letter-spacing: -30; */
+    letter-spacing: -0.03em;
+}
+
+h2, .h2 {
+    font-family: "Es Formal Standard Bold";
+    /* font-size: 80pt; */
+    /* font-size: 107px; */
+    font-size: 6.67em;
+    /* letter-spacing: -30; */
+}
+
+h3, .h3 {
+    font-family: "Es Formal Standard Medium";
+    /* font-size: 25pt; */
+    /* font-size: 33px; */
+    font-size: 2.08em;
+    letter-spacing: 0;
+}
+
+h4, .h4 {
+    font-family: "Es Formal Standard Bold";
+    /* font-size: 45pt; */
+    /* font-size: 60px; */
+    font-size: 3.75em;
+    /* letter-spacing: -20; */
+    letter-spacing: -0.02em;
+}
+
+h5, .h5 {
+    font-family: "Es Formal Standard Medium";
+    /* font-size: 38pt; */
+    /* font-size: 51px; */
+    font-size: 3.17em;
+    letter-spacing: 0;
+}
+
+h6, .h6 {
+    font-family: "Es Formal Standard Medium";
+    /* font-size: 18pt; */
+    /* font-size: 24px; */
+    font-size: 1.50em;
+    letter-spacing: 0;
+}
+
+p, .p {
+    font-family: "Es Formal Standard Medium";
+    /* font-size: 25pt; */
+    /* font-size: 33px; */
+    font-size: 2.08em;
+    letter-spacing: 0;
+}
+
+/* Nav */
+
+.nav {
+    background: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.nav__logo {
+    font-family: "Es Formal Standard Semibold";
+    display: flex;
+    flex-basis: 20%;
+}
+
+.nav__logo > div:nth-child(1) {
+    font-size: 80px;
+    line-height: 1;
+}
+
+.nav__logo > div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1;
+    font-size: 20px;
+    margin-top: 8px;
+}
+
+.nav__menu {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 40%;
+}
+
+.nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav__menu .nav__item{
+    margin-right: 10px;
+}
+
+.nav__item {
+    border-radius: 999px;
+    box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.5);
+}
+
+.nav__menu .nav__item {
+    width: calc(33.3333% - 10px);
+}
+
+.nav a {
+    color: black;
+    text-decoration: none; 
+}
+
+.nav__link {
+    line-height: 1;
+    display: inline-block;
+    /* font-size: 20px; */
+    font-size: 18px;
+    padding: 0em 0.6em;
+    width: 100%;
+    height: 100%;
+}
+
+.nav__module {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 10%;
+}
+
+.nav__search {
+    flex-basis: 100%;
+}
+
+.nav__language-selector .nav__link {
+    font-family: "Es Formal Standard Regular";
+    font-size: 14px;
+}
+
+.nav__banner {
+    flex-basis: 20%;
+    overflow: hidden;
+}
+
+.nav__banner .marquee {
+    position: relative;
+    width: 100%;
+    /* padding: 30px 0; */
+}
+
+
+.nav__banner .marquee-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* height: 20px; */
+}
+
+.nav__banner .marquee-item {
+    font-family: "Es Formal Standard SemiBold";
+    line-height: 1;
+    font-size: 20px;
+    /* margin-right: 30px; */
+    position: absolute;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.nav__banner .marquee-item > div  {
+    display: inline-block;
+    padding-right: 20px;
+}
