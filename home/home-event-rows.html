@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théâtre Public de Montreuil</title>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="/styles/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/style.css">
+
+    <!-- Javascript -->
+    <script src="/js/main.js"></script>
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+    <!-- Flickity  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flickity CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <div class="home-event-rows">
+        <div class="home-event-row" data-key="0">
+            <div class="home-event-row__background">
+                <img src="/images/carousel.jpeg"/>
+            </div>
+            <div class="home-event-row__row">
+                <div class="home-event-row__top">
+                    <div class="h6">du 27.12 au 15.01.23</div>
+                    <div class="h6">Théâtre <br> D'après Homère</div>
+                    <div class="h6">Mise en scène <br> Pauline Bayle</div>
+                    <div class="h6">Salle <br> Maria Casarès</div>
+                </div>
+
+                <div class="home-event-row__bottom">
+                        <a class="h1" href="">7 Minutes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-event-row" data-key="1">
+            <div class="home-event-row__background">
+                <img src="/images/carousel.png"/>
+            </div>
+            <div class="home-event-row__row">
+                <div class="home-event-row__top">
+                    <div class="h6">du 27.12 au 15.01.23</div>
+                    <div class="h6">Théâtre <br> D'après Homère</div>
+                    <div class="h6">Mise en scène <br> Pauline Bayle</div>
+                    <div class="h6">Salle <br> Maria Casarès</div>
+                </div>
+
+                <div class="home-event-row__bottom">
+                    <div class="marquee">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-item">
+                                <a class="h1" href="">Autre Spectacle, très long</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+<script>
+    let allHomeEventRows = document.querySelectorAll(".home-event-row");
+
+    let eventRowTween = null;
+
+    let hasTriggered = false;
+
+    let activateTitleMarquee = (item) => {
+
+        let marquee = item.currentTarget.children[1].children[1].children[0];
+        let marqueeWrapper = item.currentTarget.children[1].children[1].children[0].children[0];
+        let marqueeItem = item.currentTarget.children[1].children[1].children[0].children[0].children[0];
+        let marqueeItems = marqueeWrapper.children;
+
+        if(hasTriggered) {
+
+            let counter = 1;
+ 
+            eventRowTween.timeScale(1);
+
+            // eventRowTween.play();
+            
+            // eventRowTween = gsap.to(marqueeItems, {
+            //     duration: 100,
+            //     ease: "ease.inOut",
+            //     x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+            //     modifiers: {
+            //     x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+            //     },
+            //     repeat: -1
+            // }); 
+
+
+            // let speedUpInterval = setInterval(() => {
+            //     console.log(counter)
+            //     if(counter < 1) {
+            //         eventRowTween.timeScale(counter)
+            //         counter += 0.1;
+            //     } else {
+            //         eventRowTween.timeScale(1)
+            //         clearInterval(speedUpInterval)
+            //     }
+            // },100)  
+
+            return;
+        }
+
+
+
+        marquee.style.width = `${marqueeItem.offsetWidth * 3}px`;
+        // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;  
+
+        for(let i=0; i < 3; i++) {
+            let newNode = marqueeWrapper.children[0].cloneNode(true);
+            marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+        }        
+        
+        gsap.set(marqueeItems, {
+            x: (i) => i * marqueeItem.offsetWidth
+        });        
+
+
+        eventRowTween = gsap.to(marqueeItems, {
+            duration: 20,
+            ease: "none",
+            x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+            modifiers: {
+            x: gsap.utils.unitize(x => parseFloat(x) % -marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+            },
+            repeat: -1
+        }); 
+
+        // eventRowTween.timeScale(0.001)
+
+        let counter = 0;
+
+        // let speedUpInterval = setInterval(() => {
+        //     if(counter < 1) {
+        //         eventRowTween.timeScale(counter)
+        //         counter += 0.1;
+        //     } else {
+        //         eventRowTween.timeScale(1)
+        //         clearInterval(speedUpInterval)
+        //     }
+        // },10)          
+        
+        hasTriggered = true;
+
+    }
+
+    let deactivateTitleMarquee = (item) => {
+        let marquee = item.currentTarget.children[1].children[1].children[0];
+        let marqueeWrapper = item.currentTarget.children[1].children[1].children[0].children[0];
+        let marqueeItem = item.currentTarget.children[1].children[1].children[0].children[0].children[0];
+        let marqueeItems = marqueeWrapper.children;
+
+
+        let counter = 1;
+
+        // let slowDownInterval = setInterval(() => {
+        //     if(counter > 0.1) {
+        //         eventRowTween.timeScale(counter)
+        //         counter -= 0.1;
+        //     } else {
+        //         eventRowTween.timeScale(0.001)
+        //         clearInterval(slowDownInterval)
+        //         // eventRowTween.pause();
+        //     }
+        // },50)  
+        
+        eventRowTween.timeScale(0.001)
+
+    }    
+
+    
+
+    allHomeEventRows.forEach(item => {
+        item.addEventListener("mouseenter", (item) => {
+            activateTitleMarquee(item)
+        })
+
+        item.addEventListener("mouseleave", (item) => {
+            deactivateTitleMarquee(item)
+        })
+    })
+
+    
+    
+    // Marquee
+    
+    // let marquee = document.querySelector(".marquee");
+    // let marqueeWrapper = document.querySelector(".marquee-wrapper");
+    // let marqueeItem = document.querySelector(".marquee-item");
+    
+    // marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+    // // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+    
+    // for(let i=0; i < 5; i++) {
+    //     let newNode = marqueeWrapper.children[0].cloneNode(true);
+    //     marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+    // }
+
+
+    // gsap.set(".marquee-item", {
+    //     x: (i) => i * marqueeItem.offsetWidth
+    // });
+
+
+    
+    // let eventRowTween = gsap.to(".marquee-item", {
+    //     duration: 200,
+    //     ease: "ease.inOut",
+    //     x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+    //     modifiers: {
+    //     x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+    //     },
+    //     repeat: -1
+    // });
+
+    // setTimeout(() => {
+    //     // eventRowTween.timeScale(0.01).play(1);
+    //     // gsap.to(".marquee-item", {duration: 10, x: 0})
+    //     eventRowTween.timeScale(1)
+    //     let counter = 1;
+
+    //     let slowDownInterval = setInterval(() => {
+    //         if(counter > 0) {
+    //             eventRowTween.timeScale(counter)
+    //             counter -= 0.1;
+    //         } else {
+    //             eventRowTween.timeScale(0)
+    //             clearInterval(slowDownInterval)
+    //         }
+    //     },100)
+    // }, 1000)
+
+</script>
+
+</html>
+
