@@ -43,7 +43,13 @@
                 </div>
 
                 <div class="home-event-row__bottom">
-                        <a class="h1" href="">7 Minutes</a>
+                    <div class="marquee">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-item">
+                                <a class="h1" href="">7 Minutes</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -77,52 +83,13 @@
 
 <script>
     let allHomeEventRows = document.querySelectorAll(".home-event-row");
+    let allHomeEventRowMarqueeTweens = [];
 
-    let eventRowTween = null;
-
-    let hasTriggered = false;
-
-    let activateTitleMarquee = (item) => {
-
-        let marquee = item.currentTarget.children[1].children[1].children[0];
-        let marqueeWrapper = item.currentTarget.children[1].children[1].children[0].children[0];
-        let marqueeItem = item.currentTarget.children[1].children[1].children[0].children[0].children[0];
+    let initTitleMarquee = (item) => {
+        let marquee = item.children[1].children[1].children[0];
+        let marqueeWrapper = item.children[1].children[1].children[0].children[0];
+        let marqueeItem = item.children[1].children[1].children[0].children[0].children[0];
         let marqueeItems = marqueeWrapper.children;
-
-        if(hasTriggered) {
-
-            let counter = 1;
- 
-            eventRowTween.timeScale(1);
-
-            // eventRowTween.play();
-            
-            // eventRowTween = gsap.to(marqueeItems, {
-            //     duration: 100,
-            //     ease: "ease.inOut",
-            //     x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-            //     modifiers: {
-            //     x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-            //     },
-            //     repeat: -1
-            // }); 
-
-
-            // let speedUpInterval = setInterval(() => {
-            //     console.log(counter)
-            //     if(counter < 1) {
-            //         eventRowTween.timeScale(counter)
-            //         counter += 0.1;
-            //     } else {
-            //         eventRowTween.timeScale(1)
-            //         clearInterval(speedUpInterval)
-            //     }
-            // },100)  
-
-            return;
-        }
-
-
 
         marquee.style.width = `${marqueeItem.offsetWidth * 3}px`;
         // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;  
@@ -134,10 +101,9 @@
         
         gsap.set(marqueeItems, {
             x: (i) => i * marqueeItem.offsetWidth
-        });        
+        }); 
 
-
-        eventRowTween = gsap.to(marqueeItems, {
+        let tween = gsap.to(marqueeItems, {
             duration: 20,
             ease: "none",
             x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
@@ -145,11 +111,50 @@
             x: gsap.utils.unitize(x => parseFloat(x) % -marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
             },
             repeat: -1
-        }); 
+        });
 
-        // eventRowTween.timeScale(0.001)
+        tween.timeScale(0.00001)
+        
+        allHomeEventRowMarqueeTweens.push(tween)
+    }
 
-        let counter = 0;
+    // Activate marquee on long titles
+
+    allHomeEventRows.forEach(item => {
+        let eventRowTitleWidth = item.children[1].children[1].children[0].children[0].children[0].offsetWidth
+
+        if(eventRowTitleWidth > window.innerWidth) {
+            item.classList.add("home-event-row-marquee-active")
+
+            initTitleMarquee(item);
+        } else {
+            allHomeEventRowMarqueeTweens.push(null)
+        }
+    })
+
+       
+
+
+    // Add Event Listeners to event rows with marquees
+
+    allHomeEventRows.forEach((item, index) => {
+        item.addEventListener("mouseenter", (item) => {
+            activateTitleMarquee(item, index)
+        })
+
+        item.addEventListener("mouseleave", (item) => {
+            deactivateTitleMarquee(item, index)
+        })
+    })
+
+
+    let activateTitleMarquee = (item, index) => {
+
+        if(allHomeEventRowMarqueeTweens[index] === null) return;
+
+        allHomeEventRowMarqueeTweens[index].timeScale(1);
+
+        // let counter = 0;
 
         // let speedUpInterval = setInterval(() => {
         //     if(counter < 1) {
@@ -161,18 +166,14 @@
         //     }
         // },10)          
         
-        hasTriggered = true;
 
     }
 
-    let deactivateTitleMarquee = (item) => {
-        let marquee = item.currentTarget.children[1].children[1].children[0];
-        let marqueeWrapper = item.currentTarget.children[1].children[1].children[0].children[0];
-        let marqueeItem = item.currentTarget.children[1].children[1].children[0].children[0].children[0];
-        let marqueeItems = marqueeWrapper.children;
+    let deactivateTitleMarquee = (item, index) => {
 
+        if(allHomeEventRowMarqueeTweens[index] === null) return;
 
-        let counter = 1;
+        // let counter = 1;
 
         // let slowDownInterval = setInterval(() => {
         //     if(counter > 0.1) {
@@ -185,71 +186,10 @@
         //     }
         // },50)  
         
-        eventRowTween.timeScale(0.001)
+        allHomeEventRowMarqueeTweens[index].timeScale(0.001)
 
     }    
 
-    
-
-    allHomeEventRows.forEach(item => {
-        item.addEventListener("mouseenter", (item) => {
-            activateTitleMarquee(item)
-        })
-
-        item.addEventListener("mouseleave", (item) => {
-            deactivateTitleMarquee(item)
-        })
-    })
-
-    
-    
-    // Marquee
-    
-    // let marquee = document.querySelector(".marquee");
-    // let marqueeWrapper = document.querySelector(".marquee-wrapper");
-    // let marqueeItem = document.querySelector(".marquee-item");
-    
-    // marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
-    // // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
-    
-    // for(let i=0; i < 5; i++) {
-    //     let newNode = marqueeWrapper.children[0].cloneNode(true);
-    //     marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
-    // }
-
-
-    // gsap.set(".marquee-item", {
-    //     x: (i) => i * marqueeItem.offsetWidth
-    // });
-
-
-    
-    // let eventRowTween = gsap.to(".marquee-item", {
-    //     duration: 200,
-    //     ease: "ease.inOut",
-    //     x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-    //     modifiers: {
-    //     x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-    //     },
-    //     repeat: -1
-    // });
-
-    // setTimeout(() => {
-    //     // eventRowTween.timeScale(0.01).play(1);
-    //     // gsap.to(".marquee-item", {duration: 10, x: 0})
-    //     eventRowTween.timeScale(1)
-    //     let counter = 1;
-
-    //     let slowDownInterval = setInterval(() => {
-    //         if(counter > 0) {
-    //             eventRowTween.timeScale(counter)
-    //             counter -= 0.1;
-    //         } else {
-    //             eventRowTween.timeScale(0)
-    //             clearInterval(slowDownInterval)
-    //         }
-    //     },100)
-    // }, 1000)
 
 </script>
 
