@@ -10,10 +10,7 @@
     <link rel="stylesheet" href="./styles/reset.css">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="./styles/style.css">
-
-    <!-- Javascript -->
-    <script src="./js/main.js"></script>    
+    <link rel="stylesheet" href="./styles/style.css">  
 
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
@@ -29,6 +26,254 @@
 
 </head>
 <body>
-    
+    <nav class="nav">
+        <div class="nav__logo">
+            <div>TPM</div>
+            <div>
+                <span>Théâtre</span>
+                <span>Public</span>
+                <span>Montreuil</span>
+            </div>
+        </div>
+        
+        <div class="nav__menu">
+            <ul>
+                <li class="nav__item">
+                    <a class="nav__link h6" href="">Le Théâtre</a>
+                </li>
+                <li class="nav__item"><a class="nav__link h6" href="">Avec Vous</a></li>
+                <li class="nav__item">
+                    <a class="nav__link h6" href="">Infos pratiques</a>
+                    <ul class="nav__submenu">
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Ce</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Menu</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Fonctionne</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Aussi</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Très</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Très</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Bien</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a class="nav__link h6" href="">Programme</a>
+                    <ul class="nav__submenu">
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Toute la saison</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Le journal</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Programme</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Toute la saison</a></li>
+                        <li class="nav__sub-item"><a class="nav__link h6" href="">Le journal</a></li>
+                    </ul>
+                </li>
+                <li class="nav__item"><a class="nav__link h6" href="">Maison d'artistes</a></li>
+                <li class="nav__item"><a class="nav__link h6" href="">Newsletter</a></li>
+            </ul>
+        </div>
+
+        <div class="nav__module">
+            <div class="nav__search">
+                Search
+            </div>
+
+            <div class="nav__language-selector">
+                <ul>
+                    <li class="nav__item"><a class="nav__link" href="">Fr</a></li>
+                    <li class="nav__item"><a class="nav__link" href="">En</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__socials">
+                <ul>
+                    <li class=""><a class="" href="">inst</a></li>
+                    <li class=""><a class="" href="">fb</a></li>
+                    <li class=""><a class="" href="">twi</a></li>
+                    <li class=""><a class="" href="">lkd</a></li>
+                    <li class=""><a class="" href="">ytb</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav__banner">
+            <div class="marquee nav-marquee">
+                <div class="marquee-wrapper nav-marquee-wrapper">
+                    <div class="marquee-item nav-marquee-item">
+                        <div>
+                            Théâtre<br>
+                            Populaire<br>
+                            Montreuil
+                        </div>
+                        <div>
+                            Théâtre<br>
+                            Poétique<br>
+                            Montreuil
+                        </div>
+                        <div>
+                            Théâtre<br>
+                            Polymorphe<br>
+                            Montreuil
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="home-carousel-container">
+        <div class="home-carousel__button shadow">
+            <a class="h3" href="">Billeterie</a>
+        </div>
+        <div class="home-carousel">
+            <div class="carousel-cell">
+                <div class="carousel-cell__information">
+                    <div class="carousel-cell__text"><h4>du 27.12 au 15.01.23 Munstrum</h4></div>
+                    <div class="carousel-cell__title"><h1>Zhypher Z</h1></div>
+                </div>
+                <img src="/images/carousel.png">
+            </div>
+            <div class="carousel-cell">
+                <div class="carousel-cell__information">
+                    <div class="carousel-cell__text"><h4>du 27.12 au 15.01.23 Munstrum</h4></div>
+                    <div class="carousel-cell__title"><h1>Autre Spectacle</h1></div>
+                </div>
+                <img src="/images/carousel.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="home-event-rows">
+        <div class="home-event-row" data-key="0">
+            <div class="home-event-row__background">
+                <img src="/images/carousel.jpeg"/>
+            </div>
+            <div class="home-event-row__row">
+                <div class="home-event-row__top">
+                    <div class="h6">du 27.12 au 15.01.23</div>
+                    <div class="h6">Théâtre <br> D'après Homère</div>
+                    <div class="h6">Mise en scène <br> Pauline Bayle</div>
+                    <div class="h6">Salle <br> Maria Casarès</div>
+                </div>
+
+                <div class="home-event-row__bottom">
+                    <div class="marquee">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-item">
+                                <a class="h1" href="">7 Minutes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-event-row" data-key="1">
+            <div class="home-event-row__background">
+                <img src="/images/carousel.png"/>
+            </div>
+            <div class="home-event-row__row">
+                <div class="home-event-row__top">
+                    <div class="h6">du 27.12 au 15.01.23</div>
+                    <div class="h6">Théâtre <br> D'après Homère</div>
+                    <div class="h6">Mise en scène <br> Pauline Bayle</div>
+                    <div class="h6">Salle <br> Maria Casarès</div>
+                </div>
+
+                <div class="home-event-row__bottom">
+                    <div class="marquee">
+                        <div class="marquee-wrapper">
+                            <div class="marquee-item">
+                                <a class="h1" href="">Autre Spectacle, très long</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-event-grid">
+        <div class="home-event-tile">
+            <div class="home-event-tile__top">
+                <div class="h6">du 27.12 au 15.01.23</div>
+                <div class="h6">Concert</div>
+                <div class="h6">TPM Salle 03</div>
+            </div>
+            <div class="home-event-tile__title">
+                <a class="h2" href="">La Tipica Melingo</a>
+            </div>
+            <div class="home-event-tile__image">
+                <img src="/images/grid1.png">
+            </div>
+        </div>
+
+        <div class="home-event-tile">
+            <div class="home-event-tile__top">
+                <div class="h6">du 27.12 au 15.01.23</div>
+                <div class="h6">Concert</div>
+                <div class="h6">TPM Salle 03</div>
+            </div>
+            <div class="home-event-tile__title">
+                <a class="h2" href="">Délicieusement vôtre</a>
+            </div>
+            <div class="home-event-tile__image">
+                <img src="/images/grid1.png">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer__col h6">
+            TPM <br/>
+            Théâtre Public Montreuil
+        </div>
+
+        <div class="footer__col h6">
+            1 théâtre <br/>
+            2 salles
+        </div>
+
+        <div class="footer__col h6">
+            salle Jean-Pierre Vernant, <br/>
+            10 place Jean-Jaurès <br/>
+            salle Maria Casarès, <br/>
+            63 rue Victor Hugo
+        </div>
+
+        <div class="footer__col h6">
+            <ul>
+                <li class=""><a class="" href="">Archives</a></li>
+                <li class=""><a class="" href="">Partenaires</a></li>
+                <li class=""><a class="" href="">Pro & presse</a></li>
+                <li class=""><a class="" href="">Mentions légales</a></li>
+            </ul>
+        </div>
+
+        <div class="footer__col h6">
+            billetterie <br/>
+            <a href="tel:01 48 70 48 90">01 48 70 48 90</a> <br/>
+            administration <br/>
+            <a href="tel:01 48 70 48 90">01 48 70 48 90</a>
+        </div>
+
+        <div class="footer__col h6">
+            <a href="">Conditions générales de ventes</a>
+        </div>
+
+        <div class="footer__col h6">
+            <a href="mailto:info@tpm-theatre.fr">info@tpm-theatre.fr</a>
+        </div>
+
+        <div class="footer__col h6">
+            <ul>
+                <li class=""><a class="" href="">inst</a></li>
+                <li class=""><a class="" href="">fb</a></li>
+                <li class=""><a class="" href="">twi</a></li>
+                <li class=""><a class="" href="">lkd</a></li>
+                <li class=""><a class="" href="">ytb</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Javascript -->
+    <script src="./js/main.js"></script>  
+
 </body>
 </html>

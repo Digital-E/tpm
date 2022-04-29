@@ -12,9 +12,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./styles/style.css">
 
-    <!-- Javascript -->
-    <script src="./js/main.js"></script>
-
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
 
@@ -96,9 +93,9 @@
         </div>
 
         <div class="nav__banner">
-            <div class="marquee">
-                <div class="marquee-wrapper">
-                    <div class="marquee-item">
+            <div class="marquee nav-marquee">
+                <div class="marquee-wrapper nav-marquee-wrapper">
+                    <div class="marquee-item nav-marquee-item">
                         <div>
                             Théâtre<br>
                             Populaire<br>
@@ -119,14 +116,19 @@
             </div>
         </div>
     </nav>
+
+    <!-- Javascript -->
+    <script src="./js/main.js"></script>
+
 </body>
 
-<script>
+<!-- <script>
     // Marquee
     
-    let marquee = document.querySelector(".marquee");
-    let marqueeWrapper = document.querySelector(".marquee-wrapper");
-    let marqueeItem = document.querySelector(".marquee-item");
+    let marquee = document.querySelector(".nav-marquee");
+    let marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
+    let marqueeItem = document.querySelector(".nav-marquee-item");
+
     
     marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
     marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
@@ -137,12 +139,12 @@
     }
 
 
-    gsap.set(".marquee-item", {
+    gsap.set(".nav-marquee-item", {
         x: (i) => i * marqueeItem.offsetWidth
     });
 
     
-    gsap.to(".marquee-item", {
+    gsap.to(".nav-marquee-item", {
         duration: 50,
         ease: "none",
         x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
@@ -187,7 +189,7 @@
 
 
 
-</script>
+</script> -->
 
 </html>
 
