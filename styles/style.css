@@ -19,9 +19,20 @@
     src: url("/fonts/ESFormal-StandardMedium.otf");
 }
 
+/* Globals */
+
 :root {
     --transition-in: 0.2s;
     --transition-out: 0.3s;
+}
+
+/* Box Shadow  */
+.shadow {
+    box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.5);
+}
+
+a:hover {
+    opacity: 0.5;
 }
 
 body {
@@ -84,7 +95,7 @@ h6, .h6 {
     /* font-size: 18pt; */
     /* font-size: 24px; */
     /* font-size: 1.50em; */
-    font-size: 1.2em;
+    font-size: 1em;
     letter-spacing: 0;
 }
 
@@ -128,7 +139,7 @@ p, .p {
 .nav__menu {
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 40%;
+    flex-basis: 30%;
 }
 
 .nav ul {
@@ -168,15 +179,11 @@ p, .p {
     text-decoration: none; 
 }
 
-.nav a:hover {
-    opacity: 0.5;
-}
-
 .nav__link {
     /* font-size: 20px; */
+    font-size: 1em;
     display: block;
     position: relative;
-    font-size: 17px;
     padding: 0.3em 0.6em;
     width: 100%;
     height: 100%;
@@ -240,6 +247,10 @@ p, .p {
     background: black;
 }
 
+.nav__sub-item  .nav__link{
+    padding: 0.5em 0.6em;
+}
+
 /* Nav Marquee */
 
 .nav__banner .marquee {
@@ -271,6 +282,43 @@ p, .p {
     padding-right: 20px;
 }
 
+/* Footer */
+
+.footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-size: 0.8em;
+}
+
+.footer ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer > div:nth-child(3) {
+    flex-basis: 15%;
+}
+
+.footer > div:nth-child(6) {
+    flex-basis: 10%;
+}
+
+.footer > div:nth-child(8) > ul {
+    display: flex;
+}
+
+.footer > div:nth-child(8) > ul > li {
+    margin: 0 2px;
+}
+
+/* .footer__col {
+
+} */
+
+
 /* Home Carousel */
 
 .home-carousel .flickity-page-dots {
@@ -291,13 +339,13 @@ p, .p {
 }
 
 .home-carousel .carousel-cell {
-    width: 90%;
+    width: 96%;
     margin-right: 15px;
 }
 
 .home-carousel .carousel-cell__information {
     position: absolute;
-    padding: 30px 20px;
+    padding: 40px 4%;
     line-height: 1;
 }
 
@@ -365,6 +413,17 @@ p, .p {
 
 .home-event-row__bottom > div {
     line-height: initial;
+}
+
+.home-carousel__button {
+    position: absolute;
+    top: 50px;
+    right: 1.5%;
+    z-index: 999;
+    border-radius: 15px;
+    padding: 0.3em 0.9em;
+    border: none;
+    background: white;
 }
 
 /* Home Events Rows Marquee */
