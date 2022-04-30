@@ -1,22 +1,22 @@
 @font-face {
     font-family: "Es Formal Standard Regular";
-    src: url("/fonts/ESFormal-StandardRegular.otf") format(otf);
+    src: url("/fonts/ESFormal-StandardRegular.otf");
 }
 
 @font-face {
     font-family: "Es Formal Standard Bold";
-    src: url("/fonts/ESFormal-StandardBold.otf") format(otf);
+    src: url("/fonts/ESFormal-StandardBold.otf");
 }
 
 @font-face {
     font-family: "Es Formal Standard SemiBold";
-    src: url("fonts/ESFormal-StandardSemiBold.otf") format(otf);
+    src: url("/fonts/ESFormal-StandardSemiBold.otf");
 }
 
 
 @font-face {
     font-family: "Es Formal Standard Medium";
-    src: url("/fonts/ESFormal-StandardMedium.otf") format(otf);
+    src: url("/fonts/ESFormal-StandardMedium.otf");
 }
 
 /* Globals */
