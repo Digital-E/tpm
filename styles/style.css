@@ -19,14 +19,19 @@
     src: url("../fonts/ESFormal-StandardMedium.otf");
 }
 
-/* Globals */
+/* -------------------------------------------------------------------------- */
+/*                                   Globals                                  */
+/* -------------------------------------------------------------------------- */
 
 :root {
     --transition-in: 0.2s;
     --transition-out: 0.3s;
+
+    --border-width: 2px;
 }
 
 /* Box Shadow  */
+
 .shadow {
     box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.5);
 }
@@ -86,7 +91,8 @@ h5, .h5 {
     font-family: "Es Formal Standard Medium";
     /* font-size: 38pt; */
     /* font-size: 51px; */
-    font-size: 3.17em;
+    /* font-size: 3.17em; */
+    font-size: 1.2em;
     letter-spacing: 0;
 }
 
@@ -107,7 +113,9 @@ p, .p {
     letter-spacing: 0;
 }
 
-/* Nav */
+/* -------------------------------------------------------------------------- */
+/*                                     Nav                                    */
+/* -------------------------------------------------------------------------- */
 
 .nav {
     background: white;
@@ -214,7 +222,7 @@ p, .p {
     overflow: hidden;
 }
 
-/* Nav Sublist */
+/* ------------------------------- Nav Sublist ------------------------------ */
 
 .nav__submenu {
     position: absolute;
@@ -255,7 +263,7 @@ p, .p {
     padding: 0.5em 0.6em;
 }
 
-/* Nav Marquee */
+/* ------------------------------- Nav Marquee ------------------------------ */
 
 .nav__banner .marquee {
     position: relative;
@@ -286,7 +294,9 @@ p, .p {
     padding-right: 20px;
 }
 
-/* Footer */
+/* -------------------------------------------------------------------------- */
+/*                                   Footer                                   */
+/* -------------------------------------------------------------------------- */
 
 .footer {
     display: flex;
@@ -318,12 +328,10 @@ p, .p {
     margin: 0 2px;
 }
 
-/* .footer__col {
 
-} */
-
-
-/* Home Carousel */
+/* -------------------------------------------------------------------------- */
+/*                                Home Carousel                               */
+/* -------------------------------------------------------------------------- */
 
 .home-carousel-container {
     position: relative;
@@ -339,7 +347,7 @@ p, .p {
 
 .home-carousel .flickity-page-dot {
     background: black;
-    border: 1px solid black;
+    border: var(--border-width) solid black;
     margin: 0 2px;
 }
 
@@ -362,7 +370,89 @@ p, .p {
     width: 100%;
 }
 
-/* Home Events Rows */
+/* -------------------------------------------------------------------------- */
+/*                                Home Calendar                               */
+/* -------------------------------------------------------------------------- */
+
+.home-calendar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 20px 30px;
+}
+
+
+.home-calendar__col-left {
+    display: flex;
+}
+
+.home-calendar__col-left > div:nth-child(1) > .h5 {
+    font-family: "Es Formal Standard Bold";
+}
+
+.home-calendar__col-left > div:nth-child(2) {
+    margin-left: 40px;
+}
+
+.home-calendar__day {
+    display: inline-block;
+    margin-left: 15px;
+    transition-duration: var(--transition-out);
+}
+
+.home-calendar__day:hover {
+    opacity: 0.5;
+    cursor: pointer;
+    transition-duration: var(--transition-in);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Announcement Marquee                            */
+/* -------------------------------------------------------------------------- */
+
+.announcement-banner {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background: red;
+}
+
+.announcement-banner .marquee {
+    position: relative;
+    width: 100%;
+    top: 5px
+}
+
+.announcement-banner .marquee-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* height: 20px; */
+}
+
+.announcement-banner .marquee-item {
+    font-family: "Es Formal Standard SemiBold";
+    line-height: 1;
+    /* margin-right: 30px; */
+    position: absolute;
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.announcement-banner .marquee-item > div  {
+    display: inline-block;
+    /* padding-right: 20px; */
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                              Home Events Rows                              */
+/* -------------------------------------------------------------------------- */
+
+.home-event-rows {
+    border-top: var(--border-width) solid black;
+}
 
 .home-event-row {
     position: relative;
@@ -396,7 +486,7 @@ p, .p {
 .home-event-row__row {
     position: relative;
     width: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: var(--border-width) solid black;
     padding: 10px 20px;
     z-index: 1;
     overflow: hidden;
@@ -448,7 +538,9 @@ p, .p {
     opacity: 1;
 }
 
-/* Home Events Rows Marquee */
+/* -------------------------------------------------------------------------- */
+/*                          Home Events Rows Marquee                          */
+/* -------------------------------------------------------------------------- */
 
 .home-event-rows .marquee {
     position: relative;
@@ -480,7 +572,9 @@ p, .p {
     padding-right: 20px;
 }
 
-/* Home Events Grid */
+/* -------------------------------------------------------------------------- */
+/*                              Home Events Grid                              */
+/* -------------------------------------------------------------------------- */
 
 .home-event-grid {
     display: flex;
@@ -496,7 +590,7 @@ p, .p {
     flex-direction: column;
     flex-basis: 50%;
     padding: 10px;
-    border-bottom: 1px solid black;
+    border-bottom: var(--border-width) solid black;
     transition-duration: var(--transition-out);
 }
 
@@ -517,7 +611,7 @@ p, .p {
 .home-event-grid > div:nth-child(odd)::after {
     content: "";
     height: 100%;
-    width: 1px;
+    width: var(--border-width);
     background: black;
     position: absolute;
     right: 0;

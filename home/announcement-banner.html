@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théâtre Public de Montreuil</title>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="../styles/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+    <!-- Flickity  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flickity CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>
+    <div class="announcement-banner">
+        <div class="marquee announcement-marquee">
+            <div class="marquee-wrapper announcement-marquee-wrapper">
+                <div class="marquee-item announcement-marquee-item">
+                    <div>
+                        <h3>la représentation du 27.12.23 de 7 Minutes est reportée au 29.12.03&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Javascript -->
+    <!-- <script src="js/main.js"></script> -->
+
+</body>
+
+<script>
+    // let marquee = document.querySelector(".announcement-marquee");
+    // let marqueeWrapper = document.querySelector(".announcement-marquee-wrapper");
+    // let marqueeItem = document.querySelector(".announcement-marquee-item");
+
+    // setTimeout(() => {
+    // marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+    // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+    
+    // for(let i=0; i < 5; i++) {
+    //     let newNode = marqueeWrapper.children[0].cloneNode(true);
+    //     marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+    // }
+
+    // gsap.set(".announcement-marquee-item", {
+    //     x: (i) => i * marqueeItem.offsetWidth
+    // });
+
+    
+    // gsap.to(".announcement-marquee-item", {
+    //     duration: 75,
+    //     ease: "none",
+    //     x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+    //     modifiers: {
+    //     x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+    //     },
+    //     repeat: -1
+    // });
+    // }, 50)
+</script>
+
+</html>
+

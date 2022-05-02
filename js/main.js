@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", function(event) {
+
 /* -------------------------------------------------------------------------- */
 /*                                 Menu Script                                */
 /* -------------------------------------------------------------------------- */
@@ -83,6 +85,40 @@ var flkty = new Flickity( '.home-carousel', {
 });
 
 /* -------------------------------------------------------------------------- */
+/*                       Home Announcement Banner Script                      */
+/* -------------------------------------------------------------------------- */
+
+(function() {
+    let marquee = document.querySelector(".announcement-marquee");
+    let marqueeWrapper = document.querySelector(".announcement-marquee-wrapper");
+    let marqueeItem = document.querySelector(".announcement-marquee-item");
+
+
+    marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+    marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+
+    for(let i=0; i < 5; i++) {
+        let newNode = marqueeWrapper.children[0].cloneNode(true);
+        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+    }
+
+    gsap.set(".announcement-marquee-item", {
+        x: (i) => i * marqueeItem.offsetWidth
+    });
+
+
+    gsap.to(".announcement-marquee-item", {
+        duration: 75,
+        ease: "none",
+        x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+        modifiers: {
+        x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+        },
+        repeat: -1
+    });
+})();
+
+/* -------------------------------------------------------------------------- */
 /*                              Home Rows Script                              */
 /* -------------------------------------------------------------------------- */
 
@@ -137,8 +173,6 @@ allHomeEventRows.forEach(item => {
 })
 
    
-
-
 // Add Event Listeners to event rows with marquees
 
 allHomeEventRows.forEach((item, index) => {
@@ -193,3 +227,5 @@ let deactivateTitleMarquee = (item, index) => {
     allHomeEventRowMarqueeTweens[index].timeScale(0.001)
 
 }    
+
+});
