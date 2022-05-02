@@ -88,7 +88,7 @@ var flkty = new Flickity( '.home-carousel', {
 /*                       Home Announcement Banner Script                      */
 /* -------------------------------------------------------------------------- */
 
-(function() {
+;(() => {
     let marquee = document.querySelector(".announcement-marquee");
     let marqueeWrapper = document.querySelector(".announcement-marquee-wrapper");
     let marqueeItem = document.querySelector(".announcement-marquee-item");
