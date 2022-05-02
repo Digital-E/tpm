@@ -415,6 +415,7 @@ p, .p {
     width: 100%;
     height: 50px;
     background: red;
+    overflow: hidden;
 }
 
 .announcement-banner .marquee {
