@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théâtre Public de Montreuil</title>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="styles/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/style.css">  
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+    <!-- Flickity  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flickity CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Cuttr  -->
+    <script src="https://unpkg.com/cuttr@1/dist/cuttr.min.js"></script>
+
+</head>
+<body>
+
+    <div class="show-carousel-container">
+        <div class="show-carousel">
+            <div class="carousel-cell">
+                <img src="images/carousel.png">
+            </div>
+            <div class="carousel-cell">
+                <img src="images/carousel.png">
+            </div>
+        </div>
+    </div>
+
+    <div class="show-header">
+        <div class="show-header__button button-large shadow">
+            <a class="h3" href="">
+                <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 391.6 572" style="enable-background:new 0 0 391.6 572;" xml:space="preserve">
+                <style type="text/css">
+                .st0{fill:none;stroke:#010202;stroke-width:40.6656;}
+                </style>
+                <g>
+                <path class="st0" d="M195.8,89.3c-47.8,0-86.6-32.4-86.6-69H20.3v531.3h88.9c0-47.5,39.2-68.1,86.5-68.1
+                    c47.4,0,86.6,20.7,86.6,68.1h88.9V20.3h-88.8C282.4,56.9,243.6,89.3,195.8,89.3L195.8,89.3z M391.6,286H284.8 M250.5,286H148.9
+                    M114.5,286H0"/>
+                </g>
+                </svg>
+                <span>          
+                Billeterie
+                </span>   
+            </a>
+        </div>
+        <div class="show-header__title">
+            <h1>Zypher Z</h1>
+        </div>
+
+        <div class="show-header__information">
+            <div class="show-header__information-col">
+                <h5>du 27.12 au 15.01.23</h5>
+                <h5>Salle Maria Casarès</h5>
+            </div>
+
+            <div class="show-header__information-col">
+                <h5>Création originale de Munstrum</h5>
+                <h5>Mise en scène par Louis Arene</h5>
+            </div>
+
+            <div class="show-header__information-col">
+                <h5>En partenariat avec</h5>
+                <h5>la Comédie Française</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="show-main-cols">
+        <div class="show-main-col">
+            <div class="show-main-col__tile">
+                <h5>Théâtre / Cirque</h5>
+                <h5><a href="">Quarties d'artistes #1</a></h5>
+                <h5>durée 2h45 | sans entracte</h5>
+            </div>
+
+            <div class="show-main-col__tile">
+                <h5><b>Horaires</b></h5>
+                <p>
+                    mardi, mercredi, jeudi,
+                    vendredi à 20h
+                    samedi à 18h
+                    relâche dimanche et lundi
+                </p>
+                <p>
+                    Représentations scolaires
+                </p>
+            </div>
+
+
+            <div class="show-main-col__tile">
+                <h5><b>Tarifs</b></h5>
+                <p>
+                    de 8€ à 23€
+                    <br/>
+                    Pass 2 spectacles 28 €
+                </p>
+            </div>
+
+            <div class="show-main-col__tile">
+                <h5><b>La presse en parle</b></h5>
+                <p>
+                    <a>Lire l’interview sur France Musique</a>
+                    <br />
+                    <a>Lire l’interview sur France Musique</a>
+                </p>
+            </div>
+
+            <div class="show-main-col__tile show-experience-wrapper no-padding-tile">
+                <div>
+                    <h5><b>Poursuivez l'expérience</b></h5>
+                    <p>
+                        Soirée augmentée avec le spectacle Vaslav
+                        Samedi 09 avril - salle Maria Casarès - à l’issue de
+                        la représentation du spectacle Vaslav, artificier du genre, créature chimérique des scènes de la fumée...
+                    </p>
+                </div>
+
+                <div class="show-experience">
+                    <div class="show-experience__link-container">
+                        <a href="">
+                        <h5>Rencontre avec les artistes</h5>
+                        <h5>Le 24.04</h5>
+                        <div class="circle-plus"></div>
+                        </a>
+                    </div>
+
+                    <div class="show-experience__link-container">
+                        <a href="">
+                        <h5>Rencontre avec les artistes</h5>
+                        <h5>Le 24.04</h5>
+                        <div class="circle-plus"></div>
+                        </a>
+                    </div>
+
+                    <div class="show-experience__link-container">
+                        <a href="">
+                        <h5>Rencontre avec les artistes</h5>
+                        <h5>Le 24.04</h5>
+                        <div class="circle-plus"></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <div class="show-main-col">
+            <div class="show-main-col__tile">
+                <h5>
+                    Bruno Geslin adapte une pièce
+                    fracassante de la Renaissance
+                    Quartiers d’artistes #1
+                    anglaise. Son théâtre pictural
+                    et charnel questionne le pouvoir, ses vices et sa vanité face à la mort.
+                </h5>
+                <p>
+                    Né la même année que Shakespeare, en 1564,
+                    Christopher Marlowe fait figure de météore noir
+                    du théâtre élisabéthain. Son Édouard II est une
+                    tragédie meurtrière au verbe cru et flamboyant.
+                    Le metteur en scène et homme d’images Bruno
+                    Geslin en propose une version crépusculaire et
+                    baroque. Le vieux tyran – interprété par la comé-
+                    dienne Claude Degliame – a tout perdu et attend
+                    sa dernière heure au fond d’un cachot. Son passé
+                    violent et ses pulsions de débauche reviennent le
+                    hanter. Devant lui, défilent la reine assoiffée de
+                    pouvoir, des barons haineux et revanchards et sur-
+                    tout l’irrésistible et vénéneux Gaveston, son amour
+                    subversif. Parmi les décombres calcinés de sa mé-
+                    moire, se dessine une danse macabre tantôt gran-
+                    diose tantôt grotesque.                    
+                </p>
+            </div>
+
+            <div class="show-main-col__tile">
+                <h5><b>Biographies</b></h5>
+
+                <div class="show-biographies">
+                    <div class="show-biography">
+                        <div class="show-biography-text">
+                            <h6><b>Bruno Geslin</b></h6>
+                            <p>Bruno Geslin fait des études d’histoire de l’art à Paris VIII où il suit l’enseignement d’Yves Pagès, Gilone Brun, Michelle Kokosowski, Michel Vinaver. En 2001 il collabore avec Bruno Geslin fait des études d’histoire de l’art à Paris VIII où il suit l’enseignement d’Yves Pagès, Gilone Brun, Michelle Kokosowski, Michel Vinaver. En 2001 il collabore avec</p>
+                        </div>
+                    <div class="circle-plus"></div>
+                    </div>
+
+                    <div class="show-biography">
+                        <div class="show-biography-text">
+                            <h6><b>Alice Laloy</b></h6>
+                            <p>est issue de la 32e promotion (1998/2001) de l’école du Théâtre National de Strasbourg, section scéno- graphie/ création de costumes. Pendant son cur- sus, elle découvre la marionnette et s’interroge sur cette autre manière d’aborder le théâtre est issue de la 32e promotion (1998/2001) de l’école du Théâtre National de Strasbourg, section scéno- graphie/ création de costumes. Pendant son cur- sus, elle découvre la marionnette et s’interroge sur cette autre manière d’aborder le théâtre</p>
+                        </div>
+                        <div class="circle-plus"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="show-main-col">
+            <div class="show-main-col__tile distribution-tile">
+                <div class="distribution-tile__inner">
+                    <div class="distribution-tile__text">
+                        <h5><b>Distribution et mentions</b></h5>
+                        <p>
+                            Avec <br />
+                            Julien Ferranti, Clément Bertani,
+                            Guilhem Logerot, Arnaud Gélis, Jacques Allaire, Lionel Codino, Luc Tremblais, Hugo Lecuit
+                            <br />
+                            <br />
+                            <i>d’après</i> Édouard II de Christopher Marlowe adaptation Jean-Michel Rabeux et Bruno Geslin mise en scène et scénographie Bruno Geslin                    
+                        </p>
+                    </div>
+                    <div class="circle-plus"></div>
+                </div>
+            </div>
+
+            <div class="show-main-col__tile">
+                <h5><b>En savoir plus</b></h5>
+                <p>
+                    <a href="">Télécharger le dossier de presse</a>
+                </p>
+            </div>
+
+            <div class="show-main-col__tile show-recommendations-wrapper no-padding-tile">
+                <div>
+                    <h2>Vous pourriez aimer aussi</h2>
+                </div>
+
+                <div class="show-recommendations">
+                    <div class="show-recommendations-tile">
+                        <div class="show-recommendations-tile__information">
+                            <div><p>du 27.12 au 15.01.23</p></div>
+                            <div><p>Concert</p></div>
+                        </div>
+                        <div class="show-recommendations-tile__title">
+                            <a class="h5" href="">La Tipica Melingo</a><div class="circle-plus"></div>
+                        </div>
+
+                        <div class="show-recommendations-tile__image">
+                            <a href="">
+                                <img src="images/grid1.png">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="show-recommendations-tile">
+                        <div class="show-recommendations-tile__information">
+                            <div><p>du 27.12 au 15.01.23</p></div>
+                            <div><p>Concert</p></div>
+                        </div>
+                        <div class="show-recommendations-tile__title">
+                            <a class="h5" href="">Délicieusement vôtre</a><div class="circle-plus"></div>
+                        </div>
+
+                        <div class="show-recommendations-tile__image">
+                            <a href="">
+                                <img src="images/grid2.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Javascript -->
+    <script src="js/main.js"></script>  
+
+</body>
+</html>

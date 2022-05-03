@@ -229,3 +229,95 @@ let deactivateTitleMarquee = (item, index) => {
 }    
 
 });
+
+/* -------------------------------------------------------------------------- */
+/*                            Show Carousel Script                            */
+/* -------------------------------------------------------------------------- */
+
+// Init Carousel
+
+var flkty = new Flickity( '.show-carousel', {
+    // options
+    cellAlign: 'left',
+    contain: true,
+    autoPlay: 3000,
+    imagesLoaded: true,
+    prevNextButtons: false,
+});
+
+/* -------------------------------------------------------------------------- */
+/*                          Biography Truncate Script                         */
+/* -------------------------------------------------------------------------- */
+
+let allBiographyTruncates = [];
+let allBiographies = document.querySelector(".show-biographies").children;
+
+let toggleTruncatedBiographyElement = (index) => {
+    
+    if(allBiographyTruncates[index].isOpen) {
+        allBiographyTruncates[index].el.truncateContent();
+        allBiographyTruncates[index].isOpen = false;
+        document.querySelector(".show-biographies").children[index].classList.remove("biography-is-open");
+    } else {
+        allBiographyTruncates[index].el.expandContent();
+        allBiographyTruncates[index].isOpen = true;
+        document.querySelector(".show-biographies").children[index].classList.add("biography-is-open");
+    }
+}
+
+Array.from(allBiographies).forEach((item, index) => {
+
+    let truncateElement = new Cuttr(allBiographies[index].children[0], {
+        //options here
+        truncate: 'words',
+        length: 50
+    });
+
+    let truncateElementObject =  {
+        el: truncateElement,
+        isOpen: false
+    }
+
+    allBiographyTruncates.push(truncateElementObject);
+
+    item.children[1].addEventListener("click", () => toggleTruncatedBiographyElement(index));
+})
+
+/* -------------------------------------------------------------------------- */
+/*                        Distribution Truncate Script                        */
+/* -------------------------------------------------------------------------- */
+
+let allDistributionTruncates = [];
+
+let allDistribution = document.querySelector(".distribution-tile").children;
+
+let toggleTruncatedDistributionElement = (index) => {
+    if(allDistributionTruncates[index].isOpen) {
+        allDistributionTruncates[index].el.truncateContent();
+        allDistributionTruncates[index].isOpen = false;
+        document.querySelector(".distribution-tile").children[index].classList.remove("distribution-is-open");
+    } else {
+        allDistributionTruncates[index].el.expandContent();
+        allDistributionTruncates[index].isOpen = true;
+        document.querySelector(".distribution-tile").children[index].classList.add("distribution-is-open");
+    }
+
+}
+
+Array.from(allDistribution).forEach((item, index) => {
+
+    let truncateElement = new Cuttr(allDistribution[index].children[0], {
+        //options here
+        truncate: 'words',
+        length: 150
+    });
+
+    let truncateElementObject =  {
+        el: truncateElement,
+        isOpen: false
+    }
+
+    allDistributionTruncates.push(truncateElementObject);
+
+    item.children[1].addEventListener("click", () => toggleTruncatedDistributionElement(index));
+})

@@ -13,10 +13,19 @@
     src: url("../fonts/ESFormal-StandardSemiBold.otf");
 }
 
-
 @font-face {
     font-family: "Es Formal Standard Medium";
     src: url("../fonts/ESFormal-StandardMedium.otf");
+}
+
+@font-face {
+    font-family: "Es Formal Standard Medium Italic";
+    src: url("../fonts/ESFormal-StandardMediumItalic.otf");
+}
+
+@font-face {
+    font-family: "Social Media Circled";
+    src: url("../fonts/Social Media Circled.otf");
 }
 
 /* -------------------------------------------------------------------------- */
@@ -30,7 +39,93 @@
     --border-width: 2px;
 }
 
+/* Circle Plus */
+
+
+.circle-plus {
+    width: fit-content;
+    cursor: pointer;
+}
+
+.circle-plus:after {
+    content: "";
+    background: url("../icons/circle-plus.svg") no-repeat top right;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+}
+
+/* Large Button */
+
+.button-large {
+    z-index: 999;
+    border-radius: 15px;
+    border: none;
+    background: white;
+    width: fit-content;
+}
+
+.button-large > a {
+    display: flex;
+    padding: 0.3em 0.5em;
+    line-height: 1;
+    opacity: 1;
+}
+
+.button-large > a > svg {
+    position: relative;
+    width: 16px;
+    top: 2px;
+    margin-right: 5px;
+}
+
+.button-large {
+    opacity: 1;
+}
+
+.socials a {
+    font-family: "Social Media Circled" !important;
+    margin-left: 2px;
+}
+
+/* --------------------------- Flickity Custom CSS -------------------------- */
+
+.flickity-page-dots {
+    position: absolute;
+    right: 20px !important;
+    width: auto !important;
+    bottom: 20px !important;
+}
+
+.flickity-page-dot {
+    background: black !important;
+    border: 1px solid black !important;
+    margin: 0 2px !important;
+}
+
+.flickity-page-dot:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.flickity-page-dot.is-selected {
+    background: white !important;
+}
+
+.carousel-cell {
+    width: calc(100% - 80px);
+    margin-right: 15px;
+}
+
+.carousel-cell img {
+    width: 100%;
+}
+
 /* Box Shadow  */
+
+.nav a, .footer a {
+    opacity: 1;
+}
 
 .shadow {
     box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.5);
@@ -46,6 +141,7 @@ body {
 
 a {
     color: black;
+    opacity: 0.6;
     text-decoration: none;
 }
 
@@ -54,9 +150,11 @@ h1, .h1 {
     /* font-size: 230pt; */
     /* font-size: 307px; */
     /* font-size: 19.17em; */
-    font-size: 12em;
+    font-size: 10em;
     /* letter-spacing: -30; */
     letter-spacing: -0.03em;
+    font-weight: 100;
+    margin: 0;
 }
 
 h2, .h2 {
@@ -65,8 +163,9 @@ h2, .h2 {
     /* font-size: 107px; */
     /* font-size: 6.67em; */
     font-size: 4em;
-    letter-spacing: -0.05em;
-    /* letter-spacing: -30; */
+    letter-spacing: -0.04em;
+    font-weight: 100;
+    margin: 0;
 }
 
 h3, .h3 {
@@ -75,6 +174,8 @@ h3, .h3 {
     /* font-size: 33px; */
     font-size: 2.08em;
     letter-spacing: 0;
+    font-weight: 100;
+    margin: 0;
 }
 
 h4, .h4 {
@@ -85,6 +186,8 @@ h4, .h4 {
     font-size: 2em;
     /* letter-spacing: -20; */
     letter-spacing: -0.02em;
+    font-weight: 100;
+    margin: 0;
 }
 
 h5, .h5 {
@@ -92,8 +195,10 @@ h5, .h5 {
     /* font-size: 38pt; */
     /* font-size: 51px; */
     /* font-size: 3.17em; */
-    font-size: 1.2em;
+    font-size: 1.7em;
     letter-spacing: 0;
+    font-weight: 100;
+    margin: 0;
 }
 
 h6, .h6 {
@@ -101,16 +206,29 @@ h6, .h6 {
     /* font-size: 18pt; */
     /* font-size: 24px; */
     /* font-size: 1.50em; */
-    font-size: 1em;
+    font-size: 1.3em;
     letter-spacing: 0;
+    font-weight: 100;
+    margin: 0;
 }
 
 p, .p {
     font-family: "Es Formal Standard Medium";
     /* font-size: 25pt; */
     /* font-size: 33px; */
-    font-size: 2.08em;
+    /* font-size: 2.08em; */
+    font-size: 1.2em;
     letter-spacing: 0;
+    font-weight: 100;
+    margin: 10px 0;
+}
+
+b, .b {
+    font-family: "Es Formal Standard Bold";
+}
+
+i, .i {
+    font-family: "Es Formal Standard Medium Italic";
 }
 
 /* -------------------------------------------------------------------------- */
@@ -123,36 +241,43 @@ p, .p {
     justify-content: space-between;
 }
 
-
 .nav__logo {
     font-family: "Es Formal Standard Semibold";
     display: flex;
     flex-basis: 20%;
+    padding-right: 20px;
 }
 
 .nav__logo > div:nth-child(1) {
-    font-size: 80px;
-    line-height: 1;
+    width: 270px;
+    margin-left: 10px;
 }
 
-.nav__logo > div:nth-child(2) {
+.nav__logo > div:nth-child(n+1) {
     display: flex;
     flex-direction: column;
     justify-content: center;
     line-height: 1;
     font-size: 20px;
-    margin-top: 8px;
+}
+
+.nav__logo > div:nth-child(2) {
+    margin-left: 20px;
 }
 
 .nav__menu {
     /* display: flex;
     flex-wrap: wrap; */
     flex-basis: 36%;
+    margin: 10px 0;
 }
 
 .nav__menu > ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 5px;
+    height: 100%;
+    align-items: center;
 }
 
 .nav ul {
@@ -161,11 +286,17 @@ p, .p {
     padding: 0;
 }
 
-.nav__module ul
+.nav__module {
+    padding-right: 20px;
+}
 
- {
+.nav__module > div {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav__module ul {
+    display: flex;
 }
 
 .nav__menu .nav__item{
@@ -200,6 +331,7 @@ p, .p {
     width: 100%;
     height: 100%;
     z-index: 2;
+    white-space: nowrap;
 }
 
 .nav__module {
@@ -212,14 +344,31 @@ p, .p {
     flex-basis: 100%;
 }
 
+.nav__language-selector .nav__item {
+    width: 25px;
+    height: 25px;
+    margin: 0 2px;
+    /* min-width: 30px;
+    min-height: 30px; */
+}
+
 .nav__language-selector .nav__link {
     font-family: "Es Formal Standard Medium";
-    font-size: 14px;
+    font-size: 12px;
+    left: 6px;
+    top: 5px;
+    padding: 0;
+}
+
+.nav__socials {
+    margin-top: 5px;
+    margin-left: 10px;
 }
 
 .nav__banner {
-    flex-basis: 20%;
+    flex: 1;
     overflow: hidden;
+    margin-top: 10px;
 }
 
 /* ------------------------------- Nav Sublist ------------------------------ */
@@ -274,8 +423,6 @@ p, .p {
 
 .nav__banner .marquee-wrapper {
     position: relative;
-    width: 100%;
-    height: 100%;
     /* height: 20px; */
 }
 
@@ -335,39 +482,18 @@ p, .p {
 
 .home-carousel-container {
     position: relative;
-    /* margin-top: 80px; */
-}
-
-.home-carousel .flickity-page-dots {
-    position: absolute;
-    right: 20px;
-    width: auto;
-    bottom: 20px;
-}
-
-.home-carousel .flickity-page-dot {
-    background: black;
-    border: var(--border-width) solid black;
-    margin: 0 2px;
-}
-
-.home-carousel .flickity-page-dot.is-selected {
-    background: white;
-}
-
-.home-carousel .carousel-cell {
-    width: 96%;
-    margin-right: 15px;
 }
 
 .home-carousel .carousel-cell__information {
     position: absolute;
-    padding: 40px 4%;
+    padding: 40px;
     line-height: 1;
 }
 
-.carousel-cell img {
-    width: 100%;
+.home-carousel__button {
+    position: absolute;
+    top: 50px;
+    right: 20px;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -519,25 +645,6 @@ p, .p {
     line-height: initial;
 }
 
-.home-carousel__button {
-    position: absolute;
-    top: 50px;
-    right: 1.5%;
-    z-index: 999;
-    border-radius: 15px;
-    border: none;
-    background: white;
-}
-
-.home-carousel__button > a {
-    display: block;
-    padding: 0.4em 0.7em;
-    line-height: 1;
-}
-
-.home-carousel__button {
-    opacity: 1;
-}
 
 /* -------------------------------------------------------------------------- */
 /*                          Home Events Rows Marquee                          */
@@ -648,4 +755,217 @@ p, .p {
 .home-event-tile__image {
     width: 80%;
     margin-top: auto;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Show Carousel                               */
+/* -------------------------------------------------------------------------- */
+
+.show-carousel-container {
+    border-bottom: var(--border-width) solid black;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Show Header                                */
+/* -------------------------------------------------------------------------- */
+
+.show-header {
+    position: relative;
+    padding: 0 0 30px 0;
+}
+
+.show-header__button {
+    position: absolute;
+    right: 40px;
+    top: 50px;
+    background: yellow;
+}
+
+.show-header__title {
+    width: 100%;
+}
+
+.show-header__title > * {
+    width: 100%;
+    line-height: 1;
+    padding: 0 30px;
+}
+
+.show-header__information {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 60px;
+}
+
+.show-header__information-col > * {
+    margin: 0;
+}
+
+.show-header__information-col {
+    flex-basis: 33.3333%;
+    padding: 0 30px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Show Colums                                */
+/* -------------------------------------------------------------------------- */
+
+.show-main-cols {
+    display: flex;
+    border-top: var(--border-width) solid black;
+}
+
+.show-main-col {
+    position: relative;
+    flex-basis: 33.3333%;
+}
+
+.show-main-cols > div:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: var(--border-width);
+    background: black
+}
+
+.show-main-col__tile {
+    position: relative;
+    padding: 15px 15px;
+}
+
+.show-main-col__tile::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: var(--border-width);
+    width: 100%;
+    background: black
+}
+
+
+.no-padding-tile {
+    padding: 0;
+}
+
+.no-padding-tile > div:nth-child(1) {
+    padding: 15px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Show Distribution                             */
+/* -------------------------------------------------------------------------- */
+
+.distribution-tile {
+    background-color: rgb(255, 255, 204);
+}
+
+.distribution-tile__inner.distribution-is-open .circle-plus {
+    transform: rotateZ(45deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Show More Experiences                           */
+/* -------------------------------------------------------------------------- */
+
+.show-experience {
+    padding: 0 0 20px 10px;
+}
+
+.show-experience__link-container  {
+    background: yellow;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.show-experience__link-container .circle-plus {
+    margin: 15px 15px 0 auto;
+}
+
+.show-experience__link-container a:hover h5,
+.show-experience__link-container a:hover .circle-plus {
+    opacity: 0.5;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Show Biographies                              */
+/* -------------------------------------------------------------------------- */
+
+.show-biographies {
+    margin-top: 15px;
+}
+
+.show-biography .circle-plus {
+    margin-left: auto;
+}
+
+.show-biography.biography-is-open .circle-plus {
+    transform: rotateZ(45deg);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                            Show Recommendations                            */
+/* -------------------------------------------------------------------------- */
+
+.show-recommendations-wrapper {
+    line-height: 1;
+}
+
+.show-recommendations-tile {
+    position: relative;
+    border-top: var(--border-width) dashed black;
+    padding: 15px 15px;
+    transition-duration: var(--transition-out);
+}
+
+.show-recommendations-tile:hover {
+    background: black;
+    transition-duration: var(--transition-in);
+}
+
+.show-recommendations-tile a {
+    transition-duration: var(--transition-out);
+}
+
+.show-recommendations-tile:hover, .show-recommendations-tile:hover a {
+    color: white;
+    transition-duration: var(--transition-in);
+}
+
+.show-recommendations-tile__information {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.show-recommendations-tile__information p {
+    margin: 0;
+}
+
+.show-recommendations-tile__information > div:nth-child(1) {
+    flex-basis: 60%;
+}
+
+.show-recommendations-tile__information > div:nth-child(2) {
+    flex-basis: 40%;
+}
+
+.show-recommendations-tile__title {
+    display: flex;
+    margin: 10px 0;
+    align-items: center;
+}
+
+.show-recommendations-tile__title .circle-plus {
+    position: relative;
+    top: 5px;
+    margin-left: auto;
+}
+
+.show-recommendations-tile__title > a {
+    opacity: 1;
 }
