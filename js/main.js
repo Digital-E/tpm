@@ -7,34 +7,36 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 /* --------------------------------- Marquee -------------------------------- */
 
-let marquee = document.querySelector(".nav-marquee");
-let marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
-let marqueeItem = document.querySelector(".nav-marquee-item");
+if(document.querySelector(".nav")) {
+    let marquee = document.querySelector(".nav-marquee");
+    let marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
+    let marqueeItem = document.querySelector(".nav-marquee-item");
 
 
-marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
-marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+    marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+    marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
 
-for(let i=0; i < 5; i++) {
-    let newNode = marqueeWrapper.children[0].cloneNode(true);
-    marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+    for(let i=0; i < 5; i++) {
+        let newNode = marqueeWrapper.children[0].cloneNode(true);
+        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+    }
+
+
+    gsap.set(".nav-marquee-item", {
+        x: (i) => i * marqueeItem.offsetWidth
+    });
+
+
+    gsap.to(".nav-marquee-item", {
+        duration: 50,
+        ease: "none",
+        x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+        modifiers: {
+        x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+        },
+        repeat: -1
+    });
 }
-
-
-gsap.set(".nav-marquee-item", {
-    x: (i) => i * marqueeItem.offsetWidth
-});
-
-
-gsap.to(".nav-marquee-item", {
-    duration: 50,
-    ease: "none",
-    x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-    modifiers: {
-    x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-    },
-    repeat: -1
-});
 
 /* ---------------------------- Nav Hover Sublist --------------------------- */
 
@@ -73,9 +75,13 @@ navItems.forEach(item => item.addEventListener("mouseleave", mouseLeaveNavItem))
 /*                            Home Carousel Script                            */
 /* -------------------------------------------------------------------------- */
 
+/* -------------------------------------------------------------------------- */
+/*                            All Carousels Script                            */
+/* -------------------------------------------------------------------------- */
+
 // Init Carousel
 
-var flkty = new Flickity( '.home-carousel', {
+var flkty = new Flickity( '.carousel', {
     // options
     cellAlign: 'left',
     contain: true,
@@ -230,94 +236,111 @@ let deactivateTitleMarquee = (item, index) => {
 
 });
 
+if(document.querySelector("body").classList.contains("show-page")) {
+
+    /* -------------------------------------------------------------------------- */
+    /*                          Biography Truncate Script                         */
+    /* -------------------------------------------------------------------------- */
+
+    let allBiographyTruncates = [];
+    let allBiographies = document.querySelector(".show-biographies")?.children;
+
+    let toggleTruncatedBiographyElement = (index) => {
+        
+        if(allBiographyTruncates[index].isOpen) {
+            allBiographyTruncates[index].el.truncateContent();
+            allBiographyTruncates[index].isOpen = false;
+            document.querySelector(".show-biographies").children[index].classList.remove("biography-is-open");
+        } else {
+            allBiographyTruncates[index].el.expandContent();
+            allBiographyTruncates[index].isOpen = true;
+            document.querySelector(".show-biographies").children[index].classList.add("biography-is-open");
+        }
+    }
+
+    if(allBiographies !== undefined) {
+        Array.from(allBiographies).forEach((item, index) => {
+
+            let truncateElement = new Cuttr(allBiographies[index].children[0], {
+                //options here
+                truncate: 'words',
+                length: 50
+            });
+        
+            let truncateElementObject =  {
+                el: truncateElement,
+                isOpen: false
+            }
+        
+            allBiographyTruncates.push(truncateElementObject);
+        
+            item.children[1].addEventListener("click", () => toggleTruncatedBiographyElement(index));
+        })
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                        Distribution Truncate Script                        */
+    /* -------------------------------------------------------------------------- */
+
+    let allDistributionTruncates = [];
+
+    let allDistribution = document.querySelector(".distribution-tile")?.children;
+
+    let toggleTruncatedDistributionElement = (index) => {
+        if(allDistributionTruncates[index].isOpen) {
+            allDistributionTruncates[index].el.truncateContent();
+            allDistributionTruncates[index].isOpen = false;
+            document.querySelector(".distribution-tile").children[index].classList.remove("distribution-is-open");
+        } else {
+            allDistributionTruncates[index].el.expandContent();
+            allDistributionTruncates[index].isOpen = true;
+            document.querySelector(".distribution-tile").children[index].classList.add("distribution-is-open");
+        }
+
+    }
+
+    if(allDistribution !== undefined) {
+        Array.from(allDistribution).forEach((item, index) => {
+
+            let truncateElement = new Cuttr(allDistribution[index].children[0], {
+                //options here
+                truncate: 'words',
+                length: 150
+            });
+
+            let truncateElementObject =  {
+                el: truncateElement,
+                isOpen: false
+            }
+
+            allDistributionTruncates.push(truncateElementObject);
+
+            item.children[1].addEventListener("click", () => toggleTruncatedDistributionElement(index));
+        })
+    }
+}
+
 /* -------------------------------------------------------------------------- */
-/*                            Show Carousel Script                            */
+/*                               Season Filters                               */
 /* -------------------------------------------------------------------------- */
 
-// Init Carousel
+if(document.querySelector("body").classList.contains("season-page")) {
 
-var flkty = new Flickity( '.show-carousel', {
-    // options
-    cellAlign: 'left',
-    contain: true,
-    autoPlay: 3000,
-    imagesLoaded: true,
-    prevNextButtons: false,
-});
+    let seasonFilters = document.querySelector(".season-filters");
 
-/* -------------------------------------------------------------------------- */
-/*                          Biography Truncate Script                         */
-/* -------------------------------------------------------------------------- */
-
-let allBiographyTruncates = [];
-let allBiographies = document.querySelector(".show-biographies").children;
-
-let toggleTruncatedBiographyElement = (index) => {
+    let removeAllActiveFilters = () => {
+        Array.from(seasonFilters.children).forEach(item => item.classList.remove("season-filter--active"))
+    }
     
-    if(allBiographyTruncates[index].isOpen) {
-        allBiographyTruncates[index].el.truncateContent();
-        allBiographyTruncates[index].isOpen = false;
-        document.querySelector(".show-biographies").children[index].classList.remove("biography-is-open");
-    } else {
-        allBiographyTruncates[index].el.expandContent();
-        allBiographyTruncates[index].isOpen = true;
-        document.querySelector(".show-biographies").children[index].classList.add("biography-is-open");
+    let toggleSelectedFilter = (item) => {
+        if(item.classList.contains("season-filter--active")) {
+            return;
+        } else {
+            removeAllActiveFilters();
+            item.classList.add("season-filter--active")
+        }
     }
-}
-
-Array.from(allBiographies).forEach((item, index) => {
-
-    let truncateElement = new Cuttr(allBiographies[index].children[0], {
-        //options here
-        truncate: 'words',
-        length: 50
-    });
-
-    let truncateElementObject =  {
-        el: truncateElement,
-        isOpen: false
-    }
-
-    allBiographyTruncates.push(truncateElementObject);
-
-    item.children[1].addEventListener("click", () => toggleTruncatedBiographyElement(index));
-})
-
-/* -------------------------------------------------------------------------- */
-/*                        Distribution Truncate Script                        */
-/* -------------------------------------------------------------------------- */
-
-let allDistributionTruncates = [];
-
-let allDistribution = document.querySelector(".distribution-tile").children;
-
-let toggleTruncatedDistributionElement = (index) => {
-    if(allDistributionTruncates[index].isOpen) {
-        allDistributionTruncates[index].el.truncateContent();
-        allDistributionTruncates[index].isOpen = false;
-        document.querySelector(".distribution-tile").children[index].classList.remove("distribution-is-open");
-    } else {
-        allDistributionTruncates[index].el.expandContent();
-        allDistributionTruncates[index].isOpen = true;
-        document.querySelector(".distribution-tile").children[index].classList.add("distribution-is-open");
-    }
+    
+    Array.from(seasonFilters.children).forEach(item => item.addEventListener("click", () => toggleSelectedFilter(item)))
 
 }
-
-Array.from(allDistribution).forEach((item, index) => {
-
-    let truncateElement = new Cuttr(allDistribution[index].children[0], {
-        //options here
-        truncate: 'words',
-        length: 150
-    });
-
-    let truncateElementObject =  {
-        el: truncateElement,
-        isOpen: false
-    }
-
-    allDistributionTruncates.push(truncateElementObject);
-
-    item.children[1].addEventListener("click", () => toggleTruncatedDistributionElement(index));
-})

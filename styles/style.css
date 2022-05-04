@@ -66,9 +66,8 @@
 }
 
 .button-large > a {
-    display: flex;
+    display: block;
     padding: 0.3em 0.5em;
-    line-height: 1;
     opacity: 1;
 }
 
@@ -488,6 +487,7 @@ i, .i {
     position: absolute;
     padding: 40px;
     line-height: 1;
+    width: 70%;
 }
 
 .home-carousel__button {
@@ -686,6 +686,7 @@ i, .i {
 
 .home-event-grid {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .home-event-grid a {
@@ -758,21 +759,13 @@ i, .i {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                                Show Carousel                               */
-/* -------------------------------------------------------------------------- */
-
-.show-carousel-container {
-    border-bottom: var(--border-width) solid black;
-}
-
-
-/* -------------------------------------------------------------------------- */
 /*                                 Show Header                                */
 /* -------------------------------------------------------------------------- */
 
 .show-header {
     position: relative;
     padding: 0 0 30px 0;
+    /* border-top: var(--border-width) solid black; */
 }
 
 .show-header__button {
@@ -782,13 +775,16 @@ i, .i {
     background: yellow;
 }
 
+.show-header__button > a {
+    display: flex;
+}
+
 .show-header__title {
     width: 100%;
 }
 
 .show-header__title > * {
     width: 100%;
-    line-height: 1;
     padding: 0 30px;
 }
 
@@ -796,7 +792,7 @@ i, .i {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .show-header__information-col > * {
@@ -968,4 +964,247 @@ i, .i {
 
 .show-recommendations-tile__title > a {
     opacity: 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                Season Header                               */
+/* -------------------------------------------------------------------------- */
+
+.season-header {
+    padding: 10px;
+}
+
+.season-filters {
+    display: flex;
+    padding: 15px 30px;
+    border-top: var(--border-width) solid black;
+    border-bottom: var(--border-width) solid black;
+}
+
+.season-filter {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-basis: 16.6666%;
+}
+
+.season-filter:hover .season-filter__selector {
+    background-color: rgb(255, 0, 0, 0.5);
+}
+
+.season-filter__selector {
+    width: 20px;
+    height: 20px;
+    border: var(--border-width) solid black;
+    border-radius: 999px;
+}
+
+.season-filter__label {
+    margin-left: 10px;
+    line-height: 1;
+}
+
+.season-filter--active .season-filter__selector  {
+    background-color: red;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                          Season Month Events Grid                          */
+/* -------------------------------------------------------------------------- */
+
+.season-month-header {
+    border-bottom: var(--border-width) solid black;
+    padding-bottom: 2px;
+}
+
+.season-month-event-grid {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.season-month-event-grid::after {
+    content: "";
+    height: var(--border-width);
+    width: 100%;
+    background: black;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.season-month-event-grid a {
+    opacity: 1;
+}
+
+.season-month-event-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 50%;
+    padding: 10px;
+    border-bottom: var(--border-width) solid black;
+    transition-duration: var(--transition-out);
+}
+
+.season-month-event-tile:hover {
+    background: black;
+    transition-duration: var(--transition-in);
+}
+
+.season-month-event-tile a {
+    transition-duration: var(--transition-out);
+}
+
+.season-month-event-tile:hover, .season-month-event-tile:hover a {
+    color: white;
+    transition-duration: var(--transition-in);
+}
+
+.season-month-event-grid > div:nth-child(odd)::after {
+    content: "";
+    height: 100%;
+    width: var(--border-width);
+    background: black;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.season-month-event-tile .circle-plus {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+}
+
+.season-month-event-tile__top {
+    display: flex;
+    line-height: 1;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.season-month-event-tile__top > div:nth-child(1) {
+    flex-basis: 40%;
+}
+
+.season-month-event-tile__top > div:nth-child(2) {
+    flex-basis: 30%;
+}
+
+.season-month-event-tile__top > div:nth-child(2) {
+    flex-basis: 30%;
+}
+
+.season-month-event-tile__title {
+    width: 80%;
+    line-height: 1;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.season-month-event-tile__image {
+    width: 80%;
+    margin-top: auto;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Content Header                               */
+/* -------------------------------------------------------------------------- */
+
+.content-header {
+    position: relative;
+    padding: 0 0 30px 0;
+    /* border-top: var(--border-width) solid black; */
+}
+
+.content-header__button {
+    position: absolute;
+    right: 40px;
+    top: 50px;
+    background: yellow;
+}
+
+.content-header__title {
+    width: 100%;
+}
+
+.content-header__title > * {
+    width: 100%;
+    line-height: 1;
+    padding: 0 30px;
+}
+
+.content-header__information {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.content-header__information-col > * {
+    margin: 0;
+}
+
+.content-header__information-col {
+    /* flex-basis: 33.3333%; */
+    flex-basis: 50%;
+    padding: 0 30px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Content Columns                              */
+/* -------------------------------------------------------------------------- */
+
+.content-main-cols {
+    display: flex;
+    border-top: var(--border-width) solid black;
+}
+
+.content-main-cols > div:nth-child(1) {
+    flex-basis: 65%;
+}
+
+.content-main-cols > div:nth-child(2) {
+    flex-basis: 35%;
+}
+
+.content-main-col {
+    position: relative;
+    padding: 20px;
+}
+
+.content-main-col__double {
+    column-count: 2;
+    column-gap: 40px;
+    margin-top: 10px;
+}
+
+.content-main-col__double > * {
+    display: inline-block;
+}
+
+/* -------------------------- Content Special Link -------------------------- */
+
+.content-links {
+    width: fit-content;
+}
+
+.content-links > div:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.content-links > div:last-child {
+    margin-bottom: 40px;
+}
+
+.content-link {
+    display: block;
+    background-color: yellow;
+    width: 100%;
+}
+
+.content-link > a > * {
+    margin: 0;
 }
