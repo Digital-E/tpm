@@ -536,6 +536,8 @@ input {
 /* -------------------------------------------------------------------------- */
 
 .home-calendar {
+    position: relative;
+    z-index: 999;
     display: flex;
     width: 100%;
     justify-content: space-between;
@@ -557,14 +559,74 @@ input {
 
 .home-calendar__day {
     display: inline-block;
-    margin-left: 15px;
+    padding: 0 7px;
     transition-duration: var(--transition-out);
 }
 
+.home-calendar__day > span {
+    display: block;
+    padding-bottom: 10px;
+}
+
 .home-calendar__day:hover {
-    opacity: 0.5;
     cursor: pointer;
     transition-duration: var(--transition-in);
+}
+
+.home-calendar__day:hover > span {
+    opacity: 0.5;
+}
+
+.home-calendar__day--has-event {
+    text-decoration: underline;
+}
+
+.home-calendar__modal {
+    display: none;
+    position: absolute;
+    margin-left: -310px;
+    width: 350px;
+    border: var(--border-width) solid black;
+    border-radius: 20px;
+    padding: 15px;
+    background-color: white;
+}
+
+.home-calendar__modal--show .home-calendar__modal {
+    display: block;
+}
+
+.home-calendar__event {
+    border-top: var(--border-width) solid black;
+}
+
+.home-calendar__event:hover {
+    opacity: 0.6;
+}
+
+.home-calendar__events > div:not(:first-child) {
+    margin-top: 15px;
+}
+
+.home-calendar__date {
+    margin-bottom: 5px;
+}
+
+.home-calendar__title {
+    position: relative;
+    display: flex;
+    margin: 5px 0;
+}
+
+.home-calendar__title .circle-plus {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.home-calendar__title > h6 {
+    width: 70%;
+    line-height: 1;
 }
 
 /* -------------------------------------------------------------------------- */

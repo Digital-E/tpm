@@ -71,9 +71,6 @@ navItems.forEach(item => item.addEventListener("mouseenter", mouseEnterNavItem))
 
 navItems.forEach(item => item.addEventListener("mouseleave", mouseLeaveNavItem));
 
-/* -------------------------------------------------------------------------- */
-/*                            Home Carousel Script                            */
-/* -------------------------------------------------------------------------- */
 
 /* -------------------------------------------------------------------------- */
 /*                            All Carousels Script                            */
@@ -89,6 +86,48 @@ var flkty = new Flickity( '.carousel', {
     imagesLoaded: true,
     prevNextButtons: false,
 });
+
+/* -------------------------------------------------------------------------- */
+/*                            Home Calendar Script                            */
+/* -------------------------------------------------------------------------- */
+
+// Duplicate Dates
+
+let homeCalendarDays = 31;
+let homeCalendarColRight = document.querySelector(".home-calendar__col-right")
+
+for(let i=2; i < homeCalendarDays + 1; i++) {
+    let newHomeCalendarDayNode = homeCalendarColRight.children[0].cloneNode(true);
+    if(i % 3 === 0) {
+        newHomeCalendarDayNode.classList.add("home-calendar__day--has-event")
+    }
+
+    newHomeCalendarDayNode.children[0].innerText = i;
+
+    newHomeCalendarDayNode.HTML = newHomeCalendarDayNode;
+    homeCalendarColRight.appendChild(newHomeCalendarDayNode, homeCalendarColRight.children[0]);
+}
+
+document.querySelector(".home-calendar__col-right").children
+
+// Show Modal if Date Hovered
+
+let allHomeCalendarDays = document.querySelector(".home-calendar__col-right").children;
+
+let toggleModalVisible = (item) => {
+    if(item.classList.contains("home-calendar__day--has-event")) {
+        if(item.classList.contains("home-calendar__modal--show")) {
+        item.classList.remove("home-calendar__modal--show")
+        } else {
+            item.classList.add("home-calendar__modal--show")
+        }
+    }
+}
+
+Array.from(allHomeCalendarDays).forEach(item => {
+    item.addEventListener("mouseenter", () => toggleModalVisible(item));
+    item.addEventListener("mouseleave", () => toggleModalVisible(item));
+})
 
 /* -------------------------------------------------------------------------- */
 /*                       Home Announcement Banner Script                      */

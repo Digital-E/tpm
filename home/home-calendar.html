@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théâtre Public de Montreuil</title>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="../styles/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../styles/style.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+    <!-- Flickity  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flickity CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+</head>
+<body>  
+
+    <div class="home-calendar">
+        <div class="home-calendar__col-left">
+            <div>
+                <span class="h6">Agenda</span>
+            </div>
+            <div>
+                <span class="h6">Avril</span>
+            </div>
+        </div>
+        <div class="home-calendar__col-right">
+            <div class="h6 home-calendar__day">
+                <span>1</span>
+                <div class="home-calendar__modal">
+                    <div class="home-calendar__date"><h6>16.04.2022</h6></div>
+                    <div class="home-calendar__events">
+                        <div class="home-calendar__event">
+                            <a href="">
+                            <div class="home-calendar__title">
+                                <h6>18:00 La Tipica Melingo</h6>
+                                <div class="circle-plus"></div>
+                            </div>
+                            <div class="home-calendar__image"><img src="../images/grid1.png"/></div>
+                            </a>
+                        </div>
+
+                        <div class="home-calendar__event">
+                            <div class="home-calendar__title">
+                                <h6>12:00 à 20:00 La Cantine vous accueille</h6>
+                                <div class="circle-plus"></div>
+                            </div>
+                            <div class="home-calendar__image"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Javascript -->
+    <!-- <script src="js/main.js"></script> -->
+
+</body>
+
+<script>
+
+    // // Duplicate Dates
+
+    // let homeCalendarDays = 31;
+    // let homeCalendarColRight = document.querySelector(".home-calendar__col-right")
+
+    // for(let i=2; i < homeCalendarDays + 1; i++) {
+    //     let newHomeCalendarDayNode = homeCalendarColRight.children[0].cloneNode(true);
+    //     if(i % 3 === 0) {
+    //         newHomeCalendarDayNode.classList.add("home-calendar__day--has-event")
+    //     }
+
+    //     newHomeCalendarDayNode.children[0].innerText = i;
+
+    //     newHomeCalendarDayNode.HTML = newHomeCalendarDayNode;
+    //     homeCalendarColRight.appendChild(newHomeCalendarDayNode, homeCalendarColRight.children[0]);
+    // }
+
+    // document.querySelector(".home-calendar__col-right").children
+
+    // // Show Modal if Date Hovered
+
+    // let allHomeCalendarDays = document.querySelector(".home-calendar__col-right").children;
+
+    // let toggleModalVisible = (item) => {
+    //     if(item.classList.contains("home-calendar__day--has-event")) {
+    //         if(item.classList.contains("home-calendar__modal--show")) {
+    //         item.classList.remove("home-calendar__modal--show")
+    //         } else {
+    //             item.classList.add("home-calendar__modal--show")
+    //         }
+    //     }
+    // }
+
+    // Array.from(allHomeCalendarDays).forEach(item => {
+    //     item.addEventListener("mouseenter", () => toggleModalVisible(item));
+    //     item.addEventListener("mouseleave", () => toggleModalVisible(item));
+    // })
+
+</script>
+
+</html>
+
