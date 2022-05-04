@@ -93,41 +93,43 @@ var flkty = new Flickity( '.carousel', {
 
 // Duplicate Dates
 
-let homeCalendarDays = 31;
-let homeCalendarColRight = document.querySelector(".home-calendar__col-right")
+if(document.querySelector("body").classList.contains("home-page")) {
+    let homeCalendarDays = 31;
+    let homeCalendarColRight = document.querySelector(".home-calendar__col-right")
 
-for(let i=2; i < homeCalendarDays + 1; i++) {
-    let newHomeCalendarDayNode = homeCalendarColRight.children[0].cloneNode(true);
-    if(i % 3 === 0) {
-        newHomeCalendarDayNode.classList.add("home-calendar__day--has-event")
+    for(let i=2; i < homeCalendarDays + 1; i++) {
+        let newHomeCalendarDayNode = homeCalendarColRight.children[0].cloneNode(true);
+        if(i % 3 === 0) {
+            newHomeCalendarDayNode.classList.add("home-calendar__day--has-event")
+        }
+
+        newHomeCalendarDayNode.children[0].innerText = i;
+
+        newHomeCalendarDayNode.HTML = newHomeCalendarDayNode;
+        homeCalendarColRight.appendChild(newHomeCalendarDayNode, homeCalendarColRight.children[0]);
     }
 
-    newHomeCalendarDayNode.children[0].innerText = i;
+    document.querySelector(".home-calendar__col-right").children
 
-    newHomeCalendarDayNode.HTML = newHomeCalendarDayNode;
-    homeCalendarColRight.appendChild(newHomeCalendarDayNode, homeCalendarColRight.children[0]);
-}
+    // Show Modal if Date Hovered
 
-document.querySelector(".home-calendar__col-right").children
+    let allHomeCalendarDays = document.querySelector(".home-calendar__col-right").children;
 
-// Show Modal if Date Hovered
-
-let allHomeCalendarDays = document.querySelector(".home-calendar__col-right").children;
-
-let toggleModalVisible = (item) => {
-    if(item.classList.contains("home-calendar__day--has-event")) {
-        if(item.classList.contains("home-calendar__modal--show")) {
-        item.classList.remove("home-calendar__modal--show")
-        } else {
-            item.classList.add("home-calendar__modal--show")
+    let toggleModalVisible = (item) => {
+        if(item.classList.contains("home-calendar__day--has-event")) {
+            if(item.classList.contains("home-calendar__modal--show")) {
+            item.classList.remove("home-calendar__modal--show")
+            } else {
+                item.classList.add("home-calendar__modal--show")
+            }
         }
     }
-}
 
-Array.from(allHomeCalendarDays).forEach(item => {
-    item.addEventListener("mouseenter", () => toggleModalVisible(item));
-    item.addEventListener("mouseleave", () => toggleModalVisible(item));
-})
+    Array.from(allHomeCalendarDays).forEach(item => {
+        item.addEventListener("mouseenter", () => toggleModalVisible(item));
+        item.addEventListener("mouseleave", () => toggleModalVisible(item));
+    })
+}
 
 /* -------------------------------------------------------------------------- */
 /*                       Home Announcement Banner Script                      */
