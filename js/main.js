@@ -1,6 +1,27 @@
 document.addEventListener("DOMContentLoaded", function(event) {
 
 /* -------------------------------------------------------------------------- */
+/*                             Intro Sticky Script                            */
+/* -------------------------------------------------------------------------- */
+
+if(document.querySelector(".home-page") && window.innerWidth > 767) {
+
+    let introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
+
+    document.querySelector(".home-page-content").style.marginTop = `${introStickyHeight}px`;
+
+    ScrollTrigger.create({
+        trigger: ".nav",
+        pin: ".nav",
+        start: "top top",
+        end: "max",
+        pinSpacing: false
+    });
+
+}
+
+
+/* -------------------------------------------------------------------------- */
 /*                                 Menu Script                                */
 /* -------------------------------------------------------------------------- */
 
@@ -36,41 +57,58 @@ if(document.querySelector(".nav")) {
         },
         repeat: -1
     });
-}
 
-/* ---------------------------- Nav Hover Sublist --------------------------- */
+    /* ---------------------------- Nav Hover Sublist --------------------------- */
 
 
-let navItems = document.querySelectorAll(".nav__item");
+    let navItems = document.querySelectorAll(".nav__item");
 
-// Check Hovered Element for .nav__submenu
+    // Check Hovered Element for .nav__submenu
 
-function mouseEnterNavItem () {
-    Array.from(this.children).forEach(item => {
-        if(item.classList.contains("nav__submenu")) {
-            item.classList.add("nav__sublist--show");
-
-            this.classList.add("nav__item--submenu-open")
+    function mouseEnterNavItem () {
+        if(this.classList.contains("nav__has-submenu")) {
+            if(this.classList.contains("nav__item--submenu-open")) {
+                this.classList.remove("nav__item--submenu-open")
+                this.children[1].classList.remove("nav__sublist--show")
+            } else {
+                this.classList.add("nav__item--submenu-open")
+                this.children[1].classList.add("nav__sublist--show")
+            }
         }
-    })
-}
+    }
 
-function mouseLeaveNavItem () {
-    Array.from(this.children).forEach(item => {
-        if(item.classList.contains("nav__submenu")) {
-            item.classList.remove("nav__sublist--show");
+    function mouseLeaveNavItem () {
+        Array.from(this.children).forEach(item => {
+            if(item.classList.contains("nav__submenu")) {
+                item.classList.remove("nav__sublist--show");
 
-            this.classList.remove("nav__item--submenu-open")
+                this.classList.remove("nav__item--submenu-open")
+            }
+        })
+    }
+
+    // Add mouseover Event Listener to each .nav__item
+
+    if(window.innerWidth > 767) {
+        navItems.forEach(item => item.addEventListener("mouseenter", mouseEnterNavItem));
+
+        navItems.forEach(item => item.addEventListener("mouseleave", mouseLeaveNavItem));
+    } else {
+        navItems.forEach(item => item.addEventListener("click", mouseEnterNavItem));
+    }
+
+    // Mobile Open Menu
+
+    let toggleMobileMenu = () => {
+        if(document.querySelector(".nav").classList.contains("nav--open")) {
+            document.querySelector(".nav").classList.remove("nav--open")
+        } else {
+            document.querySelector(".nav").classList.add("nav--open")
         }
-    })
+    }
+
+    document.querySelector(".nav-mobile-burger").addEventListener("click", toggleMobileMenu);
 }
-
-// Add mouseover Event Listener to each .nav__item
-
-navItems.forEach(item => item.addEventListener("mouseenter", mouseEnterNavItem));
-
-navItems.forEach(item => item.addEventListener("mouseleave", mouseLeaveNavItem));
-
 
 /* -------------------------------------------------------------------------- */
 /*                            All Carousels Script                            */
@@ -169,112 +207,113 @@ if(document.querySelector("body").classList.contains("home-page")) {
 /*                              Home Rows Script                              */
 /* -------------------------------------------------------------------------- */
 
-let allHomeEventRows = document.querySelectorAll(".home-event-row");
-let allHomeEventRowMarqueeTweens = [];
-
-let initTitleMarquee = (item) => {
-    let marquee = item.children[1].children[1].children[0];
-    let marqueeWrapper = item.children[1].children[1].children[0].children[0];
-    let marqueeItem = item.children[1].children[1].children[0].children[0].children[0];
-    let marqueeItems = marqueeWrapper.children;
-
-    marquee.style.width = `${marqueeItem.offsetWidth * 3}px`;
-    // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;  
-
-    for(let i=0; i < 3; i++) {
-        let newNode = marqueeWrapper.children[0].cloneNode(true);
-        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
-    }        
+if(window.innerWidth > 768) {
+    let allHomeEventRows = document.querySelectorAll(".home-event-row");
+    let allHomeEventRowMarqueeTweens = [];
     
-    gsap.set(marqueeItems, {
-        x: (i) => i * marqueeItem.offsetWidth
-    }); 
-
-    let tween = gsap.to(marqueeItems, {
-        duration: 20,
-        ease: "none",
-        x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-        modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % -marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-        },
-        repeat: -1
-    });
-
-    tween.timeScale(0.00001)
+    let initTitleMarquee = (item) => {
+        let marquee = item.children[1].children[1].children[0];
+        let marqueeWrapper = item.children[1].children[1].children[0].children[0];
+        let marqueeItem = item.children[1].children[1].children[0].children[0].children[0];
+        let marqueeItems = marqueeWrapper.children;
     
-    allHomeEventRowMarqueeTweens.push(tween)
-}
+        marquee.style.width = `${marqueeItem.offsetWidth * 3}px`;
+        // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;  
+    
+        for(let i=0; i < 3; i++) {
+            let newNode = marqueeWrapper.children[0].cloneNode(true);
+            marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+        }        
+        
+        gsap.set(marqueeItems, {
+            x: (i) => i * marqueeItem.offsetWidth
+        }); 
+    
+        let tween = gsap.to(marqueeItems, {
+            duration: 20,
+            ease: "none",
+            x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+            modifiers: {
+            x: gsap.utils.unitize(x => parseFloat(x) % -marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+            },
+            repeat: -1
+        });
+    
+        tween.timeScale(0.00001)
+        
+        allHomeEventRowMarqueeTweens.push(tween)
+    }    
 
-// Init Marquee on Long Titles
+    // Init Marquee on Long Titles
 
-allHomeEventRows.forEach(item => {
-    let eventRowTitleWidth = item.children[1].children[1].children[0].children[0].children[0].offsetWidth
+    allHomeEventRows.forEach(item => {
+        let eventRowTitleWidth = item.children[1].children[1].children[0].children[0].children[0].offsetWidth
 
-    if(eventRowTitleWidth > window.innerWidth) {
-        item.classList.add("home-event-row-marquee-active")
+        if(eventRowTitleWidth > window.innerWidth) {
+            item.classList.add("home-event-row-marquee-active")
 
-        initTitleMarquee(item);
-    } else {
-        allHomeEventRowMarqueeTweens.push(null)
+            initTitleMarquee(item);
+        } else {
+            allHomeEventRowMarqueeTweens.push(null)
+        }
+    })
+
+    
+    // Add Event Listeners to event rows with marquees
+
+    allHomeEventRows.forEach((item, index) => {
+        item.addEventListener("mouseenter", (item) => {
+            activateTitleMarquee(item, index)
+        })
+
+        item.addEventListener("mouseleave", (item) => {
+            deactivateTitleMarquee(item, index)
+        })
+    })
+
+
+    let activateTitleMarquee = (item, index) => {
+
+        if(allHomeEventRowMarqueeTweens[index] === null) return;
+
+        allHomeEventRowMarqueeTweens[index].timeScale(1);
+
+        // let counter = 0;
+
+        // let speedUpInterval = setInterval(() => {
+        //     if(counter < 1) {
+        //         eventRowTween.timeScale(counter)
+        //         counter += 0.1;
+        //     } else {
+        //         eventRowTween.timeScale(1)
+        //         clearInterval(speedUpInterval)
+        //     }
+        // },10)          
+        
+
     }
-})
 
-   
-// Add Event Listeners to event rows with marquees
+    let deactivateTitleMarquee = (item, index) => {
 
-allHomeEventRows.forEach((item, index) => {
-    item.addEventListener("mouseenter", (item) => {
-        activateTitleMarquee(item, index)
-    })
+        if(allHomeEventRowMarqueeTweens[index] === null) return;
 
-    item.addEventListener("mouseleave", (item) => {
-        deactivateTitleMarquee(item, index)
-    })
-})
+        // let counter = 1;
 
+        // let slowDownInterval = setInterval(() => {
+        //     if(counter > 0.1) {
+        //         eventRowTween.timeScale(counter)
+        //         counter -= 0.1;
+        //     } else {
+        //         eventRowTween.timeScale(0.001)
+        //         clearInterval(slowDownInterval)
+        //         // eventRowTween.pause();
+        //     }
+        // },50)  
+        
+        allHomeEventRowMarqueeTweens[index].timeScale(0.001)
 
-let activateTitleMarquee = (item, index) => {
-
-    if(allHomeEventRowMarqueeTweens[index] === null) return;
-
-    allHomeEventRowMarqueeTweens[index].timeScale(1);
-
-    // let counter = 0;
-
-    // let speedUpInterval = setInterval(() => {
-    //     if(counter < 1) {
-    //         eventRowTween.timeScale(counter)
-    //         counter += 0.1;
-    //     } else {
-    //         eventRowTween.timeScale(1)
-    //         clearInterval(speedUpInterval)
-    //     }
-    // },10)          
-    
-
+    }    
 }
-
-let deactivateTitleMarquee = (item, index) => {
-
-    if(allHomeEventRowMarqueeTweens[index] === null) return;
-
-    // let counter = 1;
-
-    // let slowDownInterval = setInterval(() => {
-    //     if(counter > 0.1) {
-    //         eventRowTween.timeScale(counter)
-    //         counter -= 0.1;
-    //     } else {
-    //         eventRowTween.timeScale(0.001)
-    //         clearInterval(slowDownInterval)
-    //         // eventRowTween.pause();
-    //     }
-    // },50)  
-    
-    allHomeEventRowMarqueeTweens[index].timeScale(0.001)
-
-}    
-
 });
 
 if(document.querySelector("body").classList.contains("show-page")) {
