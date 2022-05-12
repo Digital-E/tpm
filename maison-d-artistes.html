@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Théâtre Public de Montreuil</title>
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="styles/reset.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/style.css">  
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+
+    <!-- GSAP ScrollTo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollToPlugin.min.js"></script>
+
+    <!-- GSAP ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+
+    <!-- Flickity  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.pkgd.min.js" integrity="sha512-achKCfKcYJg0u0J7UDJZbtrffUwtTLQMFSn28bDJ1Xl9DWkl/6VDT3LMfVTo09V51hmnjrrOTbtg4rEgg0QArA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Flickity CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/3.0.0/flickity.min.css" integrity="sha512-fJcFDOQo2+/Ke365m0NMCZt5uGYEWSxth3wg2i0dXu7A1jQfz9T4hdzz6nkzwmJdOdkcS8jmy2lWGaRXl+nFMQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Cuttr  -->
+    <script src="https://unpkg.com/cuttr@1/dist/cuttr.min.js"></script>
+
+</head>
+<body class="maison-page">
+    <div>
+        <div class="carousel">
+            <div class="carousel-cell">
+                <img src="images/carousel.png">
+            </div>
+            <div class="carousel-cell">
+                <img src="images/carousel.png">
+            </div>
+        </div>
+    </div>
+    <div class="maison-header">
+        <div>
+            <!-- Rich Text -->
+            <h1>Une maison d'artistes</h1>
+        </div>
+        <div class="maison-header__text-center">
+            <h3>La création artistique, cœur battant du TPM</h3>
+        </div>
+        <div class="maison-header__col-double">
+            <!-- Rich Text -->
+            <p>
+                Jusqu’en 2025, un groupe pluridisciplinaire de six artistes est associé
+                au TPM : l’auteur-metteur en scène Baptiste Amann, le collectif Bajour, la metteuse en scène et chorégraphe Fanny de Chaillé, un duo de jeunes ci- néastes, Lise Akoka et Romane Guerret, la compagnie Munstrum ainsi que l’autrice radiophonique, Charlotte Pudlowski. En tant que Centre Drama- tique National, le Théâtre Public de Montreuil est un outil au service de la recherche artistique. Aujourd’hui, le spectacle vivant connaît une vitalité exceptionnelle et le foisonnement des formes inventées sur les plateaux n’a jamais été aussi riche. Le TPM aspire donc à inviter sous son toit des propositions hétéroclites et offrir ainsi en partage les multiples facettes de la création contemporaine. Par ailleurs, ouvrir le TPM à des créateur. trice.s venu.e.s de tous bords et qui n’officient pas seulement sur les pla- teaux de théâtre me semble essentiel afin d’ancrer l’identité́ de ce lieu dans le regard puissant et singulier qu’il offre sur le monde.
+                                   
+                Parce que le théâtre est un art du temps long et que le processus qui vise à trouver comment incarner sur scène les forces invisibles de l’existence ne peut pas advenir de manière théorique, chacun.e de ces artistes pourra poser ses valises au Théâtre Public de Montrueil et profiter des ressources offertes par le théâtre pour cher- cher, expérimenter et créer. Le TPM aspire à être un compagnon de longue route au- près de chacun.e des artistes associé.es et à les accompagner aussi bien d’un point de vue matériel qu’en termes de production et d’accueil.
+                Enfin, le TPM s’engage à soutenir l’éclosion de la création émergente dans une dy- namique de soutien similaire à celle apportée à tous.tes les autres artistes associé. es. Chaque saison, un.e artiste qui n’est pas encore soutenu.e par les institutions ou accompagné.e par des lieux importants du paysage culturel sera accueilli en rési- dence au TPM afin de lui permettre de créer un spectacle dans de belles et bonnes conditions matérielles et financières. En 2022-2023, l’artiste en résidence sera Tatia- na Spivakova qui créera en janvier 2023 son texte Ton Corps - Ma Terre.                
+            </p>
+        </div>
+    </div>
+
+    <div class="main-grid">
+        <div class="main-grid-header"><h3>Découvrez les artistes associés au projet du Théâtre Public de Montreuil</h3></div>
+        <div class="main-grid-event-grid">
+            <div class="main-grid-event-tile">
+                <div class="main-grid-event-tile__title">
+                    <a class="h2" href="">Tino Sehgal</a>
+                </div>
+                <div class="main-grid-event-tile__image">
+                    <a href="">
+                        <img src="images/grid1.png">
+                    </a>
+                    <div class="circle-plus"></div>
+                </div>
+            </div>
+
+            <div class="main-grid-event-tile">
+                <div class="main-grid-event-tile__title">
+                    <a class="h2" href="">Kanye West</a>
+                </div>
+                <div class="main-grid-event-tile__image">
+                    <a href="">
+                        <img src="images/grid1.png">
+                    </a>
+                    <div class="circle-plus"></div>
+                </div>
+            </div>
+
+            <div class="main-grid-event-tile">
+                <div class="main-grid-event-tile__title">
+                    <a class="h2" href="">Jean-Claude Van Damme</a>
+                </div>
+                <div class="main-grid-event-tile__image">
+                    <a href="">
+                        <img src="images/grid1.png">
+                    </a>
+                    <div class="circle-plus"></div>
+                </div>
+            </div>
+
+            <div class="main-grid-event-tile">
+                <div class="main-grid-event-tile__title">
+                    <a class="h2" href="">Jean-Claude Van Damme</a>
+                </div>
+                <div class="main-grid-event-tile__image">
+                    <a href="">
+                        <img src="images/grid1.png">
+                    </a>
+                    <div class="circle-plus"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Javascript -->
+    <script src="js/main.js"></script>  
+
+</body>
+</html>
