@@ -105,6 +105,23 @@
     font-size: 1.5em;
 }
 
+body, .intro-sticky, .nav {
+    max-width: 1800px;
+    margin: 0 auto;
+}
+
+.intro-sticky {
+    left: 50% !important;
+    transform: translateX(-50%);
+}
+
+@media(min-width: 1800px) {
+    body {
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
+}
+
 /* --------------------------- Flickity Custom CSS -------------------------- */
 
 .flickity-page-dots {
@@ -354,9 +371,16 @@ input {
 
 .intro-sticky {
     position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    left: 50%;
     top: 0;
-    left: 0;
+    transform: translateX(-50%);
     z-index: -1;
+    height: 100vh;
+    width: 100%;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -369,6 +393,8 @@ input {
     justify-content: space-between;
     z-index: 999;
     overflow: visible;
+    width: 100%;
+    top: 0;
 }
 
 .nav__logo {
@@ -565,7 +591,7 @@ input {
     width: 100%;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1350px) {
     .nav {
         position: fixed;
         top: 0;
@@ -638,6 +664,7 @@ input {
     .nav__has-submenu > .nav__link {
         padding-right: 0;
         height: auto;
+        width: fit-content;
     }
 
     .nav__has-submenu::after {
@@ -795,7 +822,7 @@ input {
     display: flex;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1350px) {
     .footer {
         flex-wrap: wrap;
     }
@@ -1057,7 +1084,7 @@ input {
     align-items: center;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1350px) {
     .home-calendar {
         flex-wrap: wrap;
         padding: 15px;
@@ -1376,6 +1403,7 @@ input {
     padding: 10px;
     border-bottom: var(--border-width) solid black;
     transition-duration: var(--transition-out);
+    overflow: hidden;
 }
 
 @media(max-width: 767px) {
@@ -1914,14 +1942,18 @@ input {
     padding: 0 15px 25px 15px;
 }
 
-.quartier-header h1 {
-    font-size: 11.2vw;
-}
-
 .quartier-header__information {
     display: flex;
     justify-content: space-between;
     padding: 20px 0 80px 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.quartier-header__title-center > * {
+    width: fit-content;
+    margin: 40px auto 50px auto;
+    text-align: center;
 }
 
 .quartier-header__text-center > * {
@@ -1929,15 +1961,14 @@ input {
     margin: 0px auto 50px auto;
 }
 
-@media(max-width: 767px) {
-    .quartier-header h1 {
-        font-size: 11vw;
-    }
+@media(max-width: 1300px) {
 
     .quartier-header__information {
         display: flex;
         flex-direction: column;
-        padding: 20px 0 20px 0;
+        padding: 20px auto 20px auto;
+        width: fit-content;
+        align-items: center;
     }
 }
 
@@ -1966,13 +1997,10 @@ input {
     padding: 0 15px 25px 15px;
 }
 
-.maison-header h1 {
-    font-size: 9.8vw;
-}
-
 .maison-header__text-center > * {
     width: fit-content;
     margin: 40px auto 50px auto;
+    text-align: center;
 }
 
 .maison-header__col-double > * {
@@ -1981,9 +2009,6 @@ input {
 }
 
 @media(max-width: 767px) {
-    .maison-header h1 {
-        font-size: 9.5vw;
-    }
 
     .maison-header__text-center > * {
         width: fit-content;
@@ -2039,10 +2064,9 @@ input {
         flex-basis: 100%;
     }
 
-    .main-grid-event-grid > div:nth-child(3n + 1)::after,
-    .main-grid-event-grid > div:nth-child(3n + 2)::after
+    .main-grid-event-grid > div::after
      {
-        width: 0;
+        width: 0 !important;
     }    
 }
 

@@ -4,19 +4,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
 /*                             Intro Sticky Script                            */
 /* -------------------------------------------------------------------------- */
 
+let introStickyHeight = null;
+
+let scrollAnimation = null;
+
+let hasTriggeredRemoveTopMargin = false;
+
 if(document.querySelector(".home-page") && window.innerWidth > 767) {
 
-    let introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
+    introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
 
     document.querySelector(".home-page-content").style.marginTop = `${introStickyHeight}px`;
 
-    ScrollTrigger.create({
-        trigger: ".nav",
-        pin: ".nav",
-        start: "top top",
-        end: "max",
-        pinSpacing: false
-    });
+    let setNavToFixed = () => {
+        document.querySelector(".nav").style.position = "fixed";
+    }
+
+    window.addEventListener("resize", () => {
+        introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
+        document.querySelector(".home-page-content").style.marginTop = `${introStickyHeight}px`;
+    })
+
+    window.addEventListener("wheel", () => {
+        scrollAnimation !== null && scrollAnimation.kill();
+    })
+
+    setTimeout(() => {
+        scrollAnimation = gsap.to(window, {scrollTo: window.innerHeight, duration: 4, ease: "expo.inOut"})
+    }, 4000)
+
+    window.addEventListener("scroll", () => {
+        if(window.scrollY >= window.innerHeight && !hasTriggeredRemoveTopMargin) {
+            let navHeight = document.querySelector(".nav").getBoundingClientRect().height;
+            document.querySelector(".home-page-content").style.marginTop = 0;
+            document.querySelector(".home-carousel-container").style.marginTop = `${navHeight}px`;
+            window.scrollTo({ top: - window.innerHeight, behavior: "auto" });
+            setNavToFixed();
+            hasTriggeredRemoveTopMargin = true;
+        }
+    })
 
 }
 
