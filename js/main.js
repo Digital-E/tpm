@@ -74,15 +74,17 @@ if(document.querySelector(".nav")) {
     });
 
 
-    gsap.to(".nav-marquee-item", {
-        duration: 50,
-        ease: "none",
-        x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-        modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-        },
-        repeat: -1
-    });
+    setTimeout(() => {
+        gsap.to(".nav-marquee-item", {
+            duration: 50,
+            ease: "none",
+            x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+            modifiers: {
+            x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+            },
+            repeat: -1
+        });
+    },0)
 
     /* ---------------------------- Nav Hover Sublist --------------------------- */
 
@@ -218,15 +220,17 @@ if(document.querySelector("body").classList.contains("home-page")) {
     });
 
 
-    gsap.to(".announcement-marquee-item", {
-        duration: 75,
-        ease: "none",
-        x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-        modifiers: {
-        x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-        },
-        repeat: -1
-    });
+    setTimeout(() => {
+        gsap.to(".announcement-marquee-item", {
+            duration: 75,
+            ease: "none",
+            x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+            modifiers: {
+            x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+            },
+            repeat: -1
+        });
+    },0);
 })();
 
 /* -------------------------------------------------------------------------- */

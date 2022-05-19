@@ -846,8 +846,6 @@ input {
     border-bottom: var(--border-width) solid black;
     padding-bottom: 2px;
     padding: 0 15px;
-    background: black;
-    color: white;
 }
 
 .main-grid-event-grid {
@@ -1070,7 +1068,40 @@ input {
 }
 
 .home-calendar__month {
+    position: relative;
     text-decoration: underline;
+    width: 7.5em;
+}
+
+.arrow-next::after {
+    content:"";
+    position: absolute;
+    top: 0.8em;
+    right: -1.5em;
+    transform: translateY(-50%) rotateZ(-90deg);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
+
+.arrow-prev::after {
+    content:"";
+    position: absolute;
+    top: 0.8em;
+    right: -0.8em;
+    transform: translateY(-50%) rotateZ(90deg);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid black;
+}
+
+.arrow-prev:hover::after, .arrow-next:hover::after {
+    cursor: pointer;
+    border-top: 5px solid rgba(0, 0, 0, 0.5);
 }
 
 .home-calendar__col-right {
@@ -1807,8 +1838,8 @@ input {
 
 .content-header {
     position: relative;
-    padding: 0 0 30px 0;
-    /* border-top: var(--border-width) solid black; */
+    padding: 20px 0 30px 0;
+    border-bottom: var(--border-width) solid black;
 }
 
 .content-header__button {
@@ -1914,6 +1945,10 @@ input {
 
 .content-links {
     width: fit-content;
+}
+
+.content-links  .button-large > a {
+    padding: 0.3em 1.5em;
 }
 
 .content-links > div:not(:last-child) {
