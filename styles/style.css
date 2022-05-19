@@ -830,6 +830,7 @@ input {
     .footer__col {
         flex-basis: 50%;
         margin-bottom: 20px;
+        padding-right: 10px;
     }
 
     .footer .socials a {
@@ -1108,6 +1109,13 @@ input {
     margin-top: 7px;
 }
 
+@media(max-width: 767px) {
+    .home-calendar__col-right {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+    }
+}
+
 .home-calendar__day {
     display: inline-block;
     padding: 0 7px;
@@ -1135,6 +1143,7 @@ input {
     display: block;
     position: relative;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .home-calendar__modal--show > span::after {
@@ -1260,7 +1269,7 @@ input {
 .announcement-banner .marquee-item {
     font-family: "Es Formal Standard SemiBold";
     line-height: 1;
-    /* margin-right: 30px; */
+    margin-right: 100px;
     position: absolute;
     white-space: nowrap;
     width: fit-content;
@@ -1550,6 +1559,12 @@ input {
 
     .show-header__title > * {
         padding: 0 15px;
+    }
+}
+
+@media(min-width: 768px) {
+    .show-header__title > * {
+        font-size: 11rem;
     }
 }
 

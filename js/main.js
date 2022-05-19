@@ -216,7 +216,7 @@ if(document.querySelector("body").classList.contains("home-page")) {
     }
 
     gsap.set(".announcement-marquee-item", {
-        x: (i) => i * marqueeItem.offsetWidth
+        x: (i) => i * marqueeItem.offsetWidth + 30
     });
 
 
@@ -230,7 +230,7 @@ if(document.querySelector("body").classList.contains("home-page")) {
             },
             repeat: -1
         });
-    },0);
+    }, 0);
 })();
 
 /* -------------------------------------------------------------------------- */
@@ -344,7 +344,6 @@ if(window.innerWidth > 768) {
 
     }    
 }
-});
 
 if(document.querySelector("body").classList.contains("show-page")) {
 
@@ -454,3 +453,5 @@ if(document.querySelector("body").classList.contains("season-page")) {
     Array.from(seasonFilters.children).forEach(item => item.addEventListener("click", () => toggleSelectedFilter(item)))
 
 }
+
+});
