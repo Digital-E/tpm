@@ -84,7 +84,7 @@ if(document.querySelector(".nav")) {
             },
             repeat: -1
         });
-    },0)
+    },500)
 
     /* ---------------------------- Nav Hover Sublist --------------------------- */
 
@@ -230,7 +230,7 @@ if(document.querySelector("body").classList.contains("home-page")) {
             },
             repeat: -1
         });
-    }, 0);
+    }, 500);
 })();
 
 /* -------------------------------------------------------------------------- */

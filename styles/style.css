@@ -822,6 +822,11 @@ input {
     display: flex;
 }
 
+.footer__col * {
+    font-size: inherit !important;
+    margin: 0;
+}
+
 @media(max-width: 1350px) {
     .footer {
         flex-wrap: wrap;
@@ -1269,7 +1274,6 @@ input {
 .announcement-banner .marquee-item {
     font-family: "Es Formal Standard SemiBold";
     line-height: 1;
-    margin-right: 100px;
     position: absolute;
     white-space: nowrap;
     width: fit-content;
@@ -1988,6 +1992,11 @@ input {
 /*                         Quartier d'artistes Header                         */
 /* -------------------------------------------------------------------------- */
 
+.sub-page .main-grid-header {
+    background: black;
+    color: white;
+}
+
 .quartier-header {
     padding: 0 15px 25px 15px;
 }
@@ -2021,6 +2030,7 @@ input {
         align-items: center;
     }
 }
+
 
 /* -------------------------------------------------------------------------- */
 /*                          Quartier d'artistes Grid                          */
