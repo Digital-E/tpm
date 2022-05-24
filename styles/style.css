@@ -1674,7 +1674,7 @@ input {
     padding: 15px;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1200px) {
     .show-main-cols {
         flex-wrap: wrap;
     }
@@ -1739,7 +1739,7 @@ input {
     display: none;
 }
 
-@media(max-width: 767px) {
+@media(max-width: 1200px) {
     .col-one > div:nth-child(n+2) {
         display: none;
     }
