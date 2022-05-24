@@ -10,23 +10,35 @@ let scrollAnimation = null;
 
 let hasTriggeredRemoveTopMargin = false;
 
+let hasFinishedScrolling = false;
+
 if(document.querySelector(".home-page") && window.innerWidth > 767) {
 
-    introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
+    let setMarginTop = () => {
+        if(!hasFinishedScrolling) {
+            introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
+            document.querySelector(".home-page-content").style.marginTop = `${introStickyHeight}px`;
+        }
+    }
 
-    document.querySelector(".home-page-content").style.marginTop = `${introStickyHeight}px`;
+
+    if(!hasFinishedScrolling) {
+        setMarginTop();
+    }
 
     let setNavToFixed = () => {
         document.querySelector(".nav").style.position = "fixed";
+        hasFinishedScrolling = true;
     }
 
+
     window.addEventListener("resize", () => {
-        introStickyHeight = document.querySelector(".intro-sticky").offsetHeight;
-        document.querySelector(".home-page-content").style.marginTop = `${introStickyHeight}px`;
+        setMarginTop();
     })
 
     window.addEventListener("wheel", () => {
         scrollAnimation !== null && scrollAnimation.kill();
+        hasFinishedScrolling = true;
     })
 
     setTimeout(() => {
@@ -148,6 +160,7 @@ var flkty = new Flickity( '.carousel', {
     // options
     cellAlign: 'left',
     contain: true,
+    setGallerySize: false,
     autoPlay: 3000,
     imagesLoaded: true,
     prevNextButtons: false,

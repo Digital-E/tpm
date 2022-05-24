@@ -148,18 +148,25 @@ body, .intro-sticky, .nav {
 
 /* Carousel Global */
 
+.carousel {
+    height: 600px;
+}
+
 .carousel-cell {
+    height: 100%;
     width: calc(100% - 80px);
     margin-right: 15px;
 }
 
 .carousel-cell img, .carousel-cell video {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 @media(max-width: 767px) {
     .carousel-cell {
-        height: 500px;
+        height: 100%;
         width: 100%;
         margin: 0;
     }
@@ -852,6 +859,7 @@ input {
     border-bottom: var(--border-width) solid black;
     padding-bottom: 2px;
     padding: 0 15px;
+    text-align: center;
 }
 
 .main-grid-event-grid {
@@ -1205,6 +1213,10 @@ input {
     border-top: var(--border-width) solid black;
 }
 
+.home-calendar__event a {
+    opacity: 1;
+}
+
 .home-calendar__event:hover {
     opacity: 0.6;
 }
@@ -1521,6 +1533,10 @@ input {
     margin-top: auto;
 }
 
+.home-event-tile__image > a {
+    opacity: 1 !important
+}
+
 /* -------------------------------------------------------------------------- */
 /*                                 Show Header                                */
 /* -------------------------------------------------------------------------- */
@@ -1545,6 +1561,12 @@ input {
 
 .show-header__title {
     width: 100%;
+}
+
+@media(min-width: 768px) {
+    .show-header__title {
+        max-width: 80%
+    }
 }
 
 .show-header__title > * {
@@ -1612,6 +1634,10 @@ input {
 .show-main-col {
     position: relative;
     flex-basis: 33.3333%;
+}
+
+.show-main-col iframe {
+    width: 100%;
 }
 
 .show-main-cols > div:not(:last-child)::after {
@@ -1696,6 +1722,10 @@ input {
     margin-bottom: 5px;
 }
 
+.show-experience__link-container > a {
+    opacity: 1;
+}
+
 .show-experience__link-container .circle-plus {
     margin: 15px 15px 0 auto;
 }
@@ -1705,17 +1735,21 @@ input {
     opacity: 0.5;
 }
 
-.show-experience-wrapper-mobile {
+.col-one-mobile {
     display: none;
 }
 
 @media(max-width: 767px) {
-    .show-experience-wrapper {
+    .col-one > div:nth-child(n+2) {
         display: none;
     }
 
-    .show-experience-wrapper-mobile {
+    .col-one-mobile {
         display: block;
+    }
+
+    .col-one-mobile > div:nth-child(1) {
+        display: none;
     }
 }
 
@@ -1748,6 +1782,10 @@ input {
     border-top: var(--border-width) dashed black;
     padding: 15px 15px;
     transition-duration: var(--transition-out);
+}
+
+.show-recommendations-tile__image > a {
+    opacity: 1;
 }
 
 .show-recommendations-tile:hover {
@@ -1991,6 +2029,18 @@ input {
 /* -------------------------------------------------------------------------- */
 /*                         Quartier d'artistes Header                         */
 /* -------------------------------------------------------------------------- */
+
+.header-image {
+    height: 500px;
+}
+
+.header-image > img,
+.header-image > video
+ {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
 
 .sub-page .main-grid-header {
     background: black;
