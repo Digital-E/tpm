@@ -67,36 +67,33 @@ if(document.querySelector(".home-page") && window.innerWidth > 767) {
 /* --------------------------------- Marquee -------------------------------- */
 
 if(document.querySelector(".nav")) {
-    let marquee = document.querySelector(".nav-marquee");
-    let marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
-    let marqueeItem = document.querySelector(".nav-marquee-item");
-
-
-    marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
-    marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
-
-    for(let i=0; i < 5; i++) {
-        let newNode = marqueeWrapper.children[0].cloneNode(true);
-        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
-    }
-
-
-    gsap.set(".nav-marquee-item", {
-        x: (i) => i * marqueeItem.offsetWidth
-    });
-
-
     setTimeout(() => {
-        gsap.to(".nav-marquee-item", {
-            duration: 50,
-            ease: "none",
-            x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-            modifiers: {
-            x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-            },
-            repeat: -1
+        let marquee = document.querySelector(".nav-marquee");
+        let marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
+        let marqueeItem = document.querySelector(".nav-marquee-item");
+
+        marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+        marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+
+        for(let i=0; i < 5; i++) {
+            let newNode = marqueeWrapper.children[0].cloneNode(true);
+            marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+        }
+
+            gsap.set(".nav-marquee-item", {
+                x: (i) => i * marqueeItem.offsetWidth
+            });
+
+            gsap.to(".nav-marquee-item", {
+                duration: 50,
+                ease: "none",
+                x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+                modifiers: {
+                x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+                },
+                repeat: -1
         });
-    },1000)
+    }, 100)
 
     /* ---------------------------- Nav Hover Sublist --------------------------- */
 
@@ -215,25 +212,25 @@ if(document.querySelector("body").classList.contains("home-page")) {
 /* -------------------------------------------------------------------------- */
 
 ;(() => {
-    let marquee = document.querySelector(".announcement-marquee");
-    let marqueeWrapper = document.querySelector(".announcement-marquee-wrapper");
-    let marqueeItem = document.querySelector(".announcement-marquee-item");
-
-
-    marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
-    marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
-
-    for(let i=0; i < 5; i++) {
-        let newNode = marqueeWrapper.children[0].cloneNode(true);
-        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
-    }
-
-    gsap.set(".announcement-marquee-item", {
-        x: (i) => i * marqueeItem.offsetWidth + 30
-    });
-
-
     setTimeout(() => {
+
+        let marquee = document.querySelector(".announcement-marquee");
+        let marqueeWrapper = document.querySelector(".announcement-marquee-wrapper");
+        let marqueeItem = document.querySelector(".announcement-marquee-item");
+
+
+        marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+        marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+
+        for(let i=0; i < 5; i++) {
+            let newNode = marqueeWrapper.children[0].cloneNode(true);
+            marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+        }
+
+        gsap.set(".announcement-marquee-item", {
+            x: (i) => i * marqueeItem.offsetWidth + 30
+        });
+
         gsap.to(".announcement-marquee-item", {
             duration: 75,
             ease: "none",
@@ -243,7 +240,7 @@ if(document.querySelector("body").classList.contains("home-page")) {
             },
             repeat: -1
         });
-    }, 1000);
+    }, 100);
 })();
 
 /* -------------------------------------------------------------------------- */
@@ -359,6 +356,36 @@ if(window.innerWidth > 768) {
 }
 
 if(document.querySelector("body").classList.contains("show-page")) {
+
+
+    /* -------------------------------------------------------------------------- */
+    /*                                 Pictograms                                 */
+    /* -------------------------------------------------------------------------- */
+
+    let allShowPictograms = document.querySelectorAll(".show-pictogram");
+
+    let togglePictogramLabelVisibility = (item, action) => {
+
+        if(action === "show") {
+            item.target.children[1].classList.add("show-pictogram__label--show")
+        } else {
+            item.target.children[1].classList.remove("show-pictogram__label--show")
+        }
+    }
+
+    let closePictogramLabels = () => {
+        allShowPictograms.forEach(item => item.children[1].classList.remove("show-pictogram__label--show"))
+    }
+
+    allShowPictograms.forEach(item => item.addEventListener("mouseenter", (item) => togglePictogramLabelVisibility(item, "show")))
+
+    allShowPictograms.forEach(item => item.addEventListener("mouseleave", (item) => togglePictogramLabelVisibility(item, "hide")))
+
+    window.addEventListener("scroll", () => {
+        closePictogramLabels();
+    })
+
+
 
     /* -------------------------------------------------------------------------- */
     /*                          Biography Truncate Script                         */

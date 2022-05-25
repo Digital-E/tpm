@@ -1623,6 +1623,38 @@ input {
 }
 
 /* -------------------------------------------------------------------------- */
+/*                               Show Pictograms                              */
+/* -------------------------------------------------------------------------- */
+
+.show-pictograms {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.show-pictogram {
+    position: relative;
+    width: 40px;
+    max-width: 40px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.show-pictogram__label {
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    background-color: white;
+    border: 1px solid black;
+    padding: 5px 10px;
+    margin: 0 !important;
+    z-index: 999;
+}
+
+.show-pictogram__label--show {
+    display: block;
+}
+
+/* -------------------------------------------------------------------------- */
 /*                                 Show Colums                                */
 /* -------------------------------------------------------------------------- */
 
