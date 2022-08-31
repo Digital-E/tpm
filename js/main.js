@@ -126,7 +126,7 @@ if(document.querySelector(".nav")) {
 
     // Add mouseover Event Listener to each .nav__item
 
-    if(window.innerWidth > 767) {
+    if(window.innerWidth > 1350) {
         navItems.forEach(item => item.addEventListener("mouseenter", mouseEnterNavItem));
 
         navItems.forEach(item => item.addEventListener("mouseleave", mouseLeaveNavItem));
