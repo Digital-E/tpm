@@ -207,7 +207,8 @@ h1, .h1 {
     /* font-size: 230pt; */
     /* font-size: 307px; */
     /* font-size: 19.17em; */
-    font-size: 9em;
+    /* font-size: 9em; */
+    font-size: 6.3em;
     /* letter-spacing: -30; */
     letter-spacing: -0.03em;
     font-weight: 100;
@@ -220,6 +221,7 @@ h2, .h2 {
     /* font-size: 107px; */
     /* font-size: 6.67em; */
     font-size: 4em;
+    font-size: 2.8em;
     letter-spacing: -0.04em;
     font-weight: 100;
     margin: 0;
@@ -229,7 +231,8 @@ h3, .h3 {
     font-family: "Es Formal Standard Medium";
     /* font-size: 25pt; */
     /* font-size: 33px; */
-    font-size: 2.08em;
+    /* font-size: 2.08em; */
+    font-size: 1.456em;
     letter-spacing: 0;
     font-weight: 100;
     margin: 0;
@@ -240,7 +243,8 @@ h4, .h4 {
     /* font-size: 45pt; */
     /* font-size: 60px; */
     /* font-size: 3.75em; */
-    font-size: 2em;
+    /* font-size: 2em; */
+    font-size: 1.4em;
     /* letter-spacing: -20; */
     letter-spacing: -0.02em;
     font-weight: 100;
@@ -252,7 +256,8 @@ h5, .h5 {
     /* font-size: 38pt; */
     /* font-size: 51px; */
     /* font-size: 3.17em; */
-    font-size: 1.7em;
+    /* font-size: 1.7em; */
+    font-size: 1.19em;
     letter-spacing: 0;
     font-weight: 100;
     margin: 0;
@@ -263,7 +268,8 @@ h6, .h6 {
     /* font-size: 18pt; */
     /* font-size: 24px; */
     /* font-size: 1.50em; */
-    font-size: 1.3em;
+    /* font-size: 1.3em; */
+    font-size: 1.1em;
     letter-spacing: 0;
     font-weight: 100;
     margin: 0;
@@ -275,6 +281,7 @@ p, .p {
     /* font-size: 33px; */
     /* font-size: 2.08em; */
     font-size: 1.3em;
+    font-size: 1.1em;
     letter-spacing: 0;
     font-weight: 100;
     margin: 10px 0;
@@ -478,7 +485,8 @@ input {
 
 .nav__link {
     /* font-size: 20px; */
-    font-size: 1.3em;
+    /* font-size: 1.3em; */
+    font-size: 1.1em;
     display: block;
     position: relative;
     padding: 0.3em 0.6em;
@@ -781,6 +789,7 @@ input {
 .nav__banner .marquee-item {
     font-family: "Es Formal Standard Medium";
     line-height: 1;
+    /* font-size: 1.3em; */
     font-size: 1.3em;
     /* margin-right: 30px; */
     position: absolute;

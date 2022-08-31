@@ -93,7 +93,7 @@ if(document.querySelector(".nav")) {
                 },
                 repeat: -1
         });
-    }, 100)
+    }, 300)
 
     /* ---------------------------- Nav Hover Sublist --------------------------- */
 
