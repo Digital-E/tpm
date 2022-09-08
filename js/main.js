@@ -56,6 +56,11 @@ if(document.querySelector(".home-page") && window.innerWidth > 767) {
         }
     })
 
+    window.addEventListener("resize", () => {
+        let navHeight = document.querySelector(".nav").getBoundingClientRect().height;
+        document.querySelector(".home-carousel-container").style.marginTop = `${navHeight}px`;
+    })
+
 }
 
 
@@ -68,32 +73,63 @@ if(document.querySelector(".home-page") && window.innerWidth > 767) {
 
 if(document.querySelector(".nav")) {
     setTimeout(() => {
-        let marquee = document.querySelector(".nav-marquee");
-        let marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
-        let marqueeItem = document.querySelector(".nav-marquee-item");
+        let marquee;
+        let marqueeWrapper;
+        let marqueeItem;
 
-        marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
-        marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+        let animation;
 
-        for(let i=0; i < 5; i++) {
-            let newNode = marqueeWrapper.children[0].cloneNode(true);
-            marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+        let initMarquee = (init) => {
+            marquee = document.querySelector(".nav-marquee");
+            marqueeWrapper = document.querySelector(".nav-marquee-wrapper");
+            marqueeItem = document.querySelector(".nav-marquee-item");
+    
+            marquee.style.width = `${marqueeItem.offsetWidth * 6}px`;
+            marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;
+    
+
+            if(init) {
+                for(let i=0; i < 5; i++) {
+                    let newNode = marqueeWrapper.children[0].cloneNode(true);
+                    marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+                }
+            }
+    
+                animation = gsap.set(".nav-marquee-item", {
+                    x: (i) => i * marqueeItem.offsetWidth
+                });
+    
+                animation = gsap.to(".nav-marquee-item", {
+                    duration: 50,
+                    ease: "none",
+                    x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+                    modifiers: {
+                    x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+                    },
+                    repeat: -1
+            });
         }
 
-            gsap.set(".nav-marquee-item", {
-                x: (i) => i * marqueeItem.offsetWidth
-            });
+        initMarquee(true);
 
-            gsap.to(".nav-marquee-item", {
-                duration: 50,
-                ease: "none",
-                x: `+=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-                modifiers: {
-                x: gsap.utils.unitize(x => parseFloat(x) % marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-                },
-                repeat: -1
-        });
-    }, 300)
+        let destroyMarquee = () => {
+            animation.kill();
+            gsap.set(".nav-marquee-item", {
+                clearProps: "all"
+            });
+            marquee.style.width = "initial";
+            marqueeWrapper.style.left = "initial";
+
+            animation = null;
+        }
+
+        let resizeMarquee = () => {
+            destroyMarquee();
+            initMarquee(false);
+        }
+
+        window.addEventListener("resize", () => resizeMarquee())
+    }, 500)
 
     /* ---------------------------- Nav Hover Sublist --------------------------- */
 
@@ -126,7 +162,7 @@ if(document.querySelector(".nav")) {
 
     // Add mouseover Event Listener to each .nav__item
 
-    if(window.innerWidth > 1350) {
+    if(window.innerWidth > 1150) {
         navItems.forEach(item => item.addEventListener("mouseenter", mouseEnterNavItem));
 
         navItems.forEach(item => item.addEventListener("mouseleave", mouseLeaveNavItem));
@@ -240,7 +276,7 @@ if(document.querySelector("body").classList.contains("home-page")) {
             },
             repeat: -1
         });
-    }, 300);
+    }, 500);
 })();
 
 /* -------------------------------------------------------------------------- */
