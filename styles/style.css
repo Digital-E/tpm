@@ -82,8 +82,8 @@
 
 .button-large > a > svg {
     position: relative;
-    width: 16px;
-    top: 2px;
+    width: 11.6px;
+    top: 1.2px;
     margin-right: 5px;
 }
 
@@ -1082,6 +1082,7 @@ input {
 
 .home-page-content {
     background: white;
+    margin-top: 100vh;
 }
 
 @media(max-width: 767px) {

@@ -283,113 +283,129 @@ if(document.querySelector("body").classList.contains("home-page")) {
 /*                              Home Rows Script                              */
 /* -------------------------------------------------------------------------- */
 
-if(window.innerWidth > 768) {
-    let allHomeEventRows = document.querySelectorAll(".home-event-row");
-    let allHomeEventRowMarqueeTweens = [];
-    
-    let initTitleMarquee = (item) => {
-        let marquee = item.children[1].children[1].children[0];
-        let marqueeWrapper = item.children[1].children[1].children[0].children[0];
-        let marqueeItem = item.children[1].children[1].children[0].children[0].children[0];
-        let marqueeItems = marqueeWrapper.children;
-    
-        marquee.style.width = `${marqueeItem.offsetWidth * 3}px`;
-        // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;  
-    
-        for(let i=0; i < 3; i++) {
-            let newNode = marqueeWrapper.children[0].cloneNode(true);
-            marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
-        }        
+let allHomeEventRows = document.querySelectorAll(".home-event-row");
+let allHomeEventRowMarqueeTweens = [];
+let tween = null;
+let allHomeEventRowsHasTriggeredOnce = false
+
+
+    let initTitleMarquees = (resize) => {
+
+
+            allHomeEventRowMarqueeTweens = [];
+
+            if(tween) {
+                tween.kill();
+            }
+            tween = null;
+
+
+            // if(window.innerWidth > 768) {
+            
+            let initTitleMarquee = (item) => {
+                let marquee = item.children[1].children[1].children[0];
+                let marqueeWrapper = item.children[1].children[1].children[0].children[0];
+                let marqueeItem = item.children[1].children[1].children[0].children[0].children[0];
+                let marqueeItems = marqueeWrapper.children;
+            
+                if(!item.classList.contains("home-event-row-marquee-active")) {
+                    marquee.style.width = `${marqueeItem.offsetWidth * 3}px`;
+                    // marqueeWrapper.style.left = `-${marqueeItem.offsetWidth}px`;  
+                
+                    for(let i=0; i < 3; i++) {
+                        let newNode = marqueeWrapper.children[0].cloneNode(true);
+                        marqueeWrapper.insertBefore(newNode, marqueeWrapper.children[0]);
+                    }      
+                }  
+                
+                gsap.set(marqueeItems, {
+                    x: (i) => i * marqueeItem.offsetWidth
+                }); 
+            
+                tween = gsap.to(marqueeItems, {
+                    duration: 20,
+                    ease: "none",
+                    x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
+                    modifiers: {
+                    x: gsap.utils.unitize(x => parseFloat(x) % -marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
+                    },
+                    repeat: -1
+                });
+            
+                tween.timeScale(0.00001)
+                
+                allHomeEventRowMarqueeTweens.push(tween)
+
+                allHomeEventRowsHasTriggeredOnce = true
+            }    
         
-        gsap.set(marqueeItems, {
-            x: (i) => i * marqueeItem.offsetWidth
-        }); 
-    
-        let tween = gsap.to(marqueeItems, {
-            duration: 20,
-            ease: "none",
-            x: `-=${marqueeWrapper.offsetWidth}`, //move each box 500px to right
-            modifiers: {
-            x: gsap.utils.unitize(x => parseFloat(x) % -marqueeWrapper.offsetWidth) //force x value to be between 0 and 500 using modulus
-            },
-            repeat: -1
-        });
-    
-        tween.timeScale(0.00001)
         
-        allHomeEventRowMarqueeTweens.push(tween)
-    }    
+            let removeAllEventRows = (item) => {
+                let marquee = item.children[1].children[1].children[0];
+                let marqueeWrapper = item.children[1].children[1].children[0].children[0];
+                let marqueeItems = marqueeWrapper.children;
 
-    // Init Marquee on Long Titles
+                marquee.style.width = "100%";
 
-    allHomeEventRows.forEach(item => {
-        let eventRowTitleWidth = item.children[1].children[1].children[0].children[0].children[0].offsetWidth
-
-        if(eventRowTitleWidth > window.innerWidth) {
-            item.classList.add("home-event-row-marquee-active")
-
-            initTitleMarquee(item);
-        } else {
-            allHomeEventRowMarqueeTweens.push(null)
-        }
-    })
-
-    
-    // Add Event Listeners to event rows with marquees
-
-    allHomeEventRows.forEach((item, index) => {
-        item.addEventListener("mouseenter", (item) => {
-            activateTitleMarquee(item, index)
-        })
-
-        item.addEventListener("mouseleave", (item) => {
-            deactivateTitleMarquee(item, index)
-        })
-    })
-
-
-    let activateTitleMarquee = (item, index) => {
-
-        if(allHomeEventRowMarqueeTweens[index] === null) return;
-
-        allHomeEventRowMarqueeTweens[index].timeScale(1);
-
-        // let counter = 0;
-
-        // let speedUpInterval = setInterval(() => {
-        //     if(counter < 1) {
-        //         eventRowTween.timeScale(counter)
-        //         counter += 0.1;
-        //     } else {
-        //         eventRowTween.timeScale(1)
-        //         clearInterval(speedUpInterval)
-        //     }
-        // },10)          
+                Array.from(marqueeItems).forEach((item, index) => {
+                    if(index > 0) {
+                        item.remove()
+                    }
+                })   
+            }
         
-
-    }
-
-    let deactivateTitleMarquee = (item, index) => {
-
-        if(allHomeEventRowMarqueeTweens[index] === null) return;
-
-        // let counter = 1;
-
-        // let slowDownInterval = setInterval(() => {
-        //     if(counter > 0.1) {
-        //         eventRowTween.timeScale(counter)
-        //         counter -= 0.1;
-        //     } else {
-        //         eventRowTween.timeScale(0.001)
-        //         clearInterval(slowDownInterval)
-        //         // eventRowTween.pause();
-        //     }
-        // },50)  
         
-        allHomeEventRowMarqueeTweens[index].timeScale(0.001)
+            // Init Marquee on Long Titles
+        
+            allHomeEventRows.forEach(item => {
+                let eventRowTitleWidth = item.children[1].children[1].children[0].children[0].children[0].offsetWidth
+        
+                if(eventRowTitleWidth > window.innerWidth && window.innerWidth > 768) {
+                    initTitleMarquee(item);
+                    item.classList.add("home-event-row-marquee-active")
+                } else {
+                    allHomeEventRowMarqueeTweens.push(null)
+                    item.classList.remove("home-event-row-marquee-active")
+                    removeAllEventRows(item);
+                }
+            })
+        
+            
+            // Add Event Listeners to event rows with marquees
+        
+            allHomeEventRows.forEach((item, index) => {
+                item.addEventListener("mouseenter", (item) => {
+                    activateTitleMarquee(item, index)
+                })
+        
+                item.addEventListener("mouseleave", (item) => {
+                    deactivateTitleMarquee(item, index)
+                })
+            })
+        
+        
+        
+            let activateTitleMarquee = (item, index) => {
+        
+                if(allHomeEventRowMarqueeTweens[index] === null) return;
+        
+                allHomeEventRowMarqueeTweens[index].timeScale(1);       
+                
+            }
+        
+            let deactivateTitleMarquee = (item, index) => {
+        
+                if(allHomeEventRowMarqueeTweens[index] === null) return;
+                
+                allHomeEventRowMarqueeTweens[index].timeScale(0.001)
+        
+            }  
+        // }
+    }  
 
-    }    
-}
+initTitleMarquees();
+
+window.addEventListener("resize", () => initTitleMarquees(true))
 
 if(document.querySelector("body").classList.contains("show-page")) {
 
