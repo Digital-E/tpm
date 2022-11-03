@@ -1696,6 +1696,7 @@ input {
     right: 40px;
     top: 50px;
     background: yellow;
+    z-index: 0;
 }
 
 
